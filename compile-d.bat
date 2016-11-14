@@ -27,4 +27,4 @@ for %%i in (model\*.d) do (
     set FILES=!FILES! %%i
 )
 
-call "%COMPILER_PATH%dmd" -O -release -inline -noboundscheck -L/STACK:268435456 -wi -m32 !FILES! -of%name% 2>compilation.log
+call %COMPILER_PATH%dmd -O -release -inline -noboundscheck -L/STACK:268435456 -wi -m32 !FILES! -of%name% 2>compilation.log
