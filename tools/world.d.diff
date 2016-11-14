@@ -1,0 +1,13 @@
+98c98
+<     Player getMyPlayer () const
+---
+>     immutable (Player) getMyPlayer () const
+100,102c100,103
+<         for (int playerIndex = players.length - 1; playerIndex >= 0; --playerIndex) {
+<             Player player = players[playerIndex];
+<             if (player.isMe ()) {
+---
+>         foreach (immutable player; players)
+>         {
+>             if (player.me)
+>             {

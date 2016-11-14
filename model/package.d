@@ -1,0 +1,27 @@
+module model;
+
+public import model.action_type;
+public import model.bonus;
+public import model.bonus_type;
+public import model.building;
+public import model.building_type;
+public import model.circular_unit;
+public import model.faction;
+public import model.game;
+public import model.lane_type;
+public import model.living_unit;
+public import model.message;
+public import model.minion;
+public import model.minion_type;
+public import model.move;
+public import model.player;
+public import model.player_context;
+public import model.projectile;
+public import model.projectile_type;
+public import model.skill_type;
+public import model.status;
+public import model.status_type;
+public import model.tree;
+public import model.unit;
+public import model.wizard;
+public import model.world;

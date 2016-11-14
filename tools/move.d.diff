@@ -1,0 +1,20 @@
+26c26
+<     double speed;
+---
+>     double speed = 0.0;
+40c40
+<     double strafeSpeed;
+---
+>     double strafeSpeed = 0.0;
+52c52
+<     double turn;
+---
+>     double turn = 0.0;
+72c72
+<     double castAngle;
+---
+>     double castAngle = 0.0;
+86c86
+<     double minCastDistance;
+---
+>     double minCastDistance = 0.0;
