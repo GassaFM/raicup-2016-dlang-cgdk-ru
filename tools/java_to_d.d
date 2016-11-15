@@ -781,7 +781,7 @@ void main ()
 	auto output = File ("../model/package.d", "wt");
 	output.writeln ("module model;");
 	output.writeln;
-	sort(topNames);
+	sort (topNames);
 	foreach (name; topNames)
 	{
 		output.writeln ("public import model.", name.toSnakeCase, ";");
