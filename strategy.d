@@ -8,5 +8,5 @@ import model.world;
 public interface Strategy
 {
     void move (immutable Wizard self, immutable World world,
-        immutable Game game, ref Move move);
+        immutable Game game, Move move);
 }

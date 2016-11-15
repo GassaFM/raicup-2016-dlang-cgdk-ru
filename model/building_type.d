@@ -6,6 +6,11 @@ module model.building_type;
 enum BuildingType : byte
 {
     /**
+     * Значение по умолчанию.
+     */
+    unknown = -1,
+
+    /**
      * Охранная башня.
      */
     guardianTower,

@@ -14,6 +14,10 @@
 <     double turn;
 ---
 >     double turn = 0.0;
+58c58
+<     ActionType action;
+---
+>     ActionType action = ActionType.unknown;
 71c71
 <     double castAngle;
 ---
@@ -22,6 +26,10 @@
 <     double minCastDistance;
 ---
 >     double minCastDistance = 0.0;
+121c121
+<     SkillType skillToLearn;
+---
+>     SkillType skillToLearn = SkillType.unknown;
 140c140
 <     Message [] messages;
 ---

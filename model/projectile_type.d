@@ -6,6 +6,11 @@ module model.projectile_type;
 enum ProjectileType : byte
 {
     /**
+     * Значение по умолчанию.
+     */
+    unknown = -1,
+
+    /**
      * Магическая ракета. Небольшой сгусток чистой энергии, который наносит урон при прямом попадании.
      */
     magicMissile,

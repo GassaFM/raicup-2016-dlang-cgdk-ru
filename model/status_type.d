@@ -6,6 +6,11 @@ module model.status_type;
 enum StatusType : byte
 {
     /**
+     * Значение по умолчанию.
+     */
+    unknown = -1,
+
+    /**
      * Юнит горит. Каждый тик ему наносится некоторый урон.
      */
     burning,

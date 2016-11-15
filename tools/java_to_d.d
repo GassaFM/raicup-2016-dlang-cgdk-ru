@@ -604,6 +604,11 @@ class Enum
 		res ~= headComment;
 		res ~= headLine;
 		res ~= "{";
+		res ~= "    /**";
+		res ~= "     * Значение по умолчанию.";
+		res ~= "     */";
+		res ~= "    unknown = -1,";
+		res ~= "";
 		res ~= lines;
 		res ~= "}";
 		return res;

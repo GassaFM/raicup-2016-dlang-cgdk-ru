@@ -12,6 +12,11 @@ module model.action_type;
 enum ActionType : byte
 {
     /**
+     * Значение по умолчанию.
+     */
+    unknown = -1,
+
+    /**
      * Ничего не делать.
      */
     none,
