@@ -9,10 +9,14 @@ rm java_to_d.o*
 mkdir -p ../model
 mkdir -p ../docs
 ./java_to_d
+
+pushd ../model
 for f in move player_context world ; do
-	patch ../model/$f.d $f.d.diff
-	unix2dos ../model/$f.d
+	patch $f.d ../tools/$f.d.diff
+	unix2dos $f.d
 done
+popd
+
 pushd ..
 for f in model/*.d ; do
 	dmd -o- -c -D -Dddocs $f
