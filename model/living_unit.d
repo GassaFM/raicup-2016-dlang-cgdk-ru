@@ -7,22 +7,22 @@ import model.status;
 /**
  * Класс, определяющий живого юнита круглой формы.
  */
-abstract class LivingUnit : CircularUnit
+abstract immutable class LivingUnit : CircularUnit
 {
     /**
      * Returns: Возвращает текущее количество жизненной энергии.
      */
-    immutable int life;
+    int life;
     /**
      * Returns: Возвращает максимальное количество жизненной энергии.
      */
-    immutable int maxLife;
+    int maxLife;
     /**
      * Returns: Возвращает магические статусы, влияющие на живого юнита.
      */
-    immutable Status [] statuses;
+    Status [] statuses;
 
-    protected immutable this (
+    protected this (
         long id,
         double x,
         double y,
@@ -39,6 +39,6 @@ abstract class LivingUnit : CircularUnit
 
         this.life = life;
         this.maxLife = maxLife;
-        this.statuses = statuses.idup;
+        this.statuses = statuses;
     }
 }

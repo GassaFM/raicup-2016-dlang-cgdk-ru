@@ -10,36 +10,36 @@ import model.building_type;
  * $(BR)
  * Строения не могут быть заморожены (`Frozen`).
  */
-class Building : LivingUnit
+immutable class Building : LivingUnit
 {
     /**
      * Returns: Возвращает тип строения.
      */
-    immutable BuildingType type;
+    BuildingType type;
     /**
      * Returns: Возвращает максимальное расстояние (от центра до центра),
      * на котором данное строение обнаруживает другие объекты.
      */
-    immutable double visionRange;
+    double visionRange;
     /**
      * Returns: Возвращает максимальное расстояние (от центра до центра),
      * на котором данное строение может атаковать другие объекты.
      */
-    immutable double attackRange;
+    double attackRange;
     /**
      * Returns: Возвращает урон одной атаки.
      */
-    immutable int damage;
+    int damage;
     /**
      * Returns: Возвращает интервал между атаками.
      */
-    immutable int cooldownTicks;
+    int cooldownTicks;
     /**
      * Returns: Возвращает количество тиков, оставшееся до следующей атаки.
      */
-    immutable int remainingActionCooldownTicks;
+    int remainingActionCooldownTicks;
 
-    immutable this (
+    this (
         long id,
         double x,
         double y,

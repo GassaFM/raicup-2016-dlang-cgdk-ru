@@ -11,62 +11,62 @@ import model.projectile;
 /**
  * Этот класс описывает игровой мир. Содержит также описания всех игроков и игровых объектов (<<юнитов>>).
  */
-class World
+immutable class World
 {
     /**
      * Returns: Возвращает номер текущего тика.
      */
-    immutable int tickIndex;
+    int tickIndex;
     /**
      * Returns: Возвращает базовую длительность игры в тиках. Реальная длительность может отличаться от этого значения в
      * меньшую сторону. Эквивалентно `game.tickCount`.
      */
-    immutable int tickCount;
+    int tickCount;
     /**
      * Returns: Возвращает ширину мира.
      */
-    immutable double width;
+    double width;
     /**
      * Returns: Возвращает высоту мира.
      */
-    immutable double height;
+    double height;
     /**
      * Returns: Возвращает список игроков (в случайном порядке).
      * После каждого тика объекты, задающие игроков, пересоздаются.
      */
-    immutable Player [] players;
+    Player [] players;
     /**
      * Returns: Возвращает список видимых волшебников (в случайном порядке).
      * После каждого тика объекты, задающие волшебников, пересоздаются.
      */
-    immutable Wizard [] wizards;
+    Wizard [] wizards;
     /**
      * Returns: Возвращает список видимых последователей (в случайном порядке).
      * После каждого тика объекты, задающие последователей, пересоздаются.
      */
-    immutable Minion [] minions;
+    Minion [] minions;
     /**
      * Returns: Возвращает список видимых магических снарядов (в случайном порядке).
      * После каждого тика объекты, задающие снаряды, пересоздаются.
      */
-    immutable Projectile [] projectiles;
+    Projectile [] projectiles;
     /**
      * Returns: Возвращает список видимых бонусов (в случайном порядке).
      * После каждого тика объекты, задающие бонусы, пересоздаются.
      */
-    immutable Bonus [] bonuses;
+    Bonus [] bonuses;
     /**
      * Returns: Возвращает список видимых строений (в случайном порядке).
      * После каждого тика объекты, задающие строения, пересоздаются.
      */
-    immutable Building [] buildings;
+    Building [] buildings;
     /**
      * Returns: Возвращает список видимых деревьев (в случайном порядке).
      * После каждого тика объекты, задающие деревья, пересоздаются.
      */
-    immutable Tree [] trees;
+    Tree [] trees;
 
-    immutable this (
+    this (
         int tickIndex,
         int tickCount,
         double width,
@@ -83,13 +83,13 @@ class World
         this.tickCount = tickCount;
         this.width = width;
         this.height = height;
-        this.players = players.idup;
-        this.wizards = wizards.idup;
-        this.minions = minions.idup;
-        this.projectiles = projectiles.idup;
-        this.bonuses = bonuses.idup;
-        this.buildings = buildings.idup;
-        this.trees = trees.idup;
+        this.players = players;
+        this.wizards = wizards;
+        this.minions = minions;
+        this.projectiles = projectiles;
+        this.bonuses = bonuses;
+        this.buildings = buildings;
+        this.trees = trees;
     }
 
     /**

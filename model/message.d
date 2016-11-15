@@ -14,12 +14,12 @@ import model.lane_type;
  * Волшебник волен проигнорировать как любую отдельную часть сообщения, так и всё сообщение целиком, однако это может
  * привести к поражению дружественной фракции.
  */
-class Message
+immutable class Message
 {
     /**
      * Returns: Возвращает указание контролировать определённую дорожку.
      */
-    immutable LaneType lane;
+    LaneType lane;
     /**
      * Returns: Возвращает указание изучить какое-либо умение.
      * $(BR)
@@ -29,7 +29,7 @@ class Message
      * $(BR)
      * Значение поля может быть доступно не во всех режимах игры.
      */
-    immutable SkillType skillToLearn;
+    SkillType skillToLearn;
     /**
      * Returns: Возвращает текстовое сообщение на забытом древнем языке.
      * $(BR)
@@ -40,12 +40,12 @@ class Message
      * $(BR)
      * Значение поля может быть доступно не во всех режимах игры.
      */
-    immutable byte [] rawMessage;
+    byte [] rawMessage;
 
-    immutable this (
+    this (
         immutable (LaneType) lane,
         immutable (SkillType) skillToLearn,
-        byte [] rawMessage)
+        const (byte) [] rawMessage)
     {
         this.lane = lane;
         this.skillToLearn = skillToLearn;

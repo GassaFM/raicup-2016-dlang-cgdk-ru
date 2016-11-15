@@ -5,14 +5,14 @@ import model.wizard;
 
 immutable class PlayerContext
 {
-    immutable Wizard [] wizards;
-    immutable World world;
+    Wizard [] wizards;
+    World world;
 
-    immutable this (
+    this (
         immutable (Wizard) [] wizards,
         immutable (World) world)
     {
-        this.wizards = wizards == null ? null : wizards.idup;
+        this.wizards = wizards;
         this.world = world;
     }
 }

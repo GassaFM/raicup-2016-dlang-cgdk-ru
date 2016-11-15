@@ -11,31 +11,31 @@ import model.faction;
  * Миньоны, оставшиеся по той или иной причине без хозяина, часто объединяются в небольшие группы и селятся в лесах.
  * Они крайне настороженно относятся ко всем другим волшебникам и их миньонам.
  */
-class Minion : LivingUnit
+immutable class Minion : LivingUnit
 {
     /**
      * Returns: Возвращает тип миньона.
      */
-    immutable MinionType type;
+    MinionType type;
     /**
      * Returns: Возвращает максимальное расстояние (от центра до центра),
      * на котором данный миньон обнаруживает другие объекты.
      */
-    immutable double visionRange;
+    double visionRange;
     /**
      * Returns: Возвращает урон одной атаки.
      */
-    immutable int damage;
+    int damage;
     /**
      * Returns: Возвращает интервал между атаками.
      */
-    immutable int cooldownTicks;
+    int cooldownTicks;
     /**
      * Returns: Возвращает количество тиков, оставшееся до следующей атаки.
      */
-    immutable int remainingActionCooldownTicks;
+    int remainingActionCooldownTicks;
 
-    immutable this (
+    this (
         long id,
         double x,
         double y,

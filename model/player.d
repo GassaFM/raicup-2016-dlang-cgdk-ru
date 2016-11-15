@@ -5,35 +5,35 @@ import model.faction;
 /**
  * Содержит данные о текущем состоянии игрока.
  */
-class Player
+immutable class Player
 {
     /**
      * Returns: Возвращает уникальный идентификатор игрока.
      */
-    immutable long id;
+    long id;
     /**
      * Returns: Возвращает `true` в том и только в том случае, если этот игрок ваш.
      */
-    immutable bool me;
+    bool me;
     /**
      * Returns: Возвращает имя игрока.
      */
-    immutable string name;
+    string name;
     /**
      * Returns: Возвращает специальный флаг --- показатель того, что стратегия игрока <<упала>>.
      * Более подробную информацию можно найти в документации к игре.
      */
-    immutable bool strategyCrashed;
+    bool strategyCrashed;
     /**
      * Returns: Возвращает количество баллов, набранное игроком.
      */
-    immutable int score;
+    int score;
     /**
      * Returns: Возвращает фракцию, к которой принадлежит данный игрок.
      */
-    immutable Faction faction;
+    Faction faction;
 
-    immutable this (
+    this (
         long id,
         bool me,
         string name,
