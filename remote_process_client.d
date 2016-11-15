@@ -171,7 +171,7 @@ private:
         write !(double) (t.maxCastDistance);
         write !(long) (t.statusTargetId);
         write !(SkillType) (t.skillToLearn);
-        write !(Message []) (t.messages);
+        write !(immutable Message []) (t.messages);
     }
 
     void write (T) (T t)

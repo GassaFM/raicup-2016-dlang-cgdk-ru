@@ -15,11 +15,11 @@
  Волшебник не может использовать действие, если оно ещё не восстановилось после его предыдущего применения (значение
  <pre style="display:inline;" class="d_inline_code">remainingCooldownTicksByAction[actionType.ordinal ()]</pre> больше <pre style="display:inline;" class="d_inline_code">0</pre>).<br><br>
 
-<dl><dt><big><a name="ActionType.None"></a><u>None</u></big></dt>
+<dl><dt><big><a name="ActionType.none"></a><u>none</u></big></dt>
 <dd>Ничего не делать.<br><br>
 
 </dd>
-<dt><big><a name="ActionType.Staff"></a><u>Staff</u></big></dt>
+<dt><big><a name="ActionType.staff"></a><u>staff</u></big></dt>
 <dd>Ударить посохом.
  <br>
  Атака поражает все живые объекты в секторе от <pre style="display:inline;" class="d_inline_code">-game.staffSector / 2.0</pre> до <pre style="display:inline;" class="d_inline_code">game.staffSector / 2.0</pre>.
@@ -27,7 +27,7 @@
  <pre style="display:inline;" class="d_inline_code">game.staffRange + livingUnit.radius</pre>.<br><br>
 
 </dd>
-<dt><big><a name="ActionType.MagicMissile"></a><u>MagicMissile</u></big></dt>
+<dt><big><a name="ActionType.magicMissile"></a><u>magicMissile</u></big></dt>
 <dd>Создать магическую ракету.
  <br>
  Магическая ракета является базовым заклинанием любого волшебника. Наносит урон при прямом попадании.
@@ -39,7 +39,7 @@
  Требует <pre style="display:inline;" class="d_inline_code">game.magicMissileManacost</pre> единиц магической энергии.<br><br>
 
 </dd>
-<dt><big><a name="ActionType.FrostBolt"></a><u>FrostBolt</u></big></dt>
+<dt><big><a name="ActionType.frostBolt"></a><u>frostBolt</u></big></dt>
 <dd>Создать ледяную стрелу.
  <br>
  Ледяная стрела наносит урон при прямом попадании, а также замораживает цель.
@@ -48,10 +48,10 @@
  <pre style="display:inline;" class="d_inline_code">wizard.angle + move.castAngle</pre>, а абсолютное значение скорости равно <pre style="display:inline;" class="d_inline_code">game.frostBoltSpeed</pre>.
  Столкновения магического снаряда и создавшего его волшебника игнорируются.
  <br>
- Требует <pre style="display:inline;" class="d_inline_code">game.frostBoltManacost</pre> единиц магической энергии и изучения умения <pre style="display:inline;" class="d_inline_code"><u>FrostBolt</u></pre>.<br><br>
+ Требует <pre style="display:inline;" class="d_inline_code">game.frostBoltManacost</pre> единиц магической энергии и изучения умения <pre style="display:inline;" class="d_inline_code"><u>frostBolt</u></pre>.<br><br>
 
 </dd>
-<dt><big><a name="ActionType.Fireball"></a><u>Fireball</u></big></dt>
+<dt><big><a name="ActionType.fireball"></a><u>fireball</u></big></dt>
 <dd>Создать огненный шар.
  <br>
  Огненный шар взрывается при достижении максимальной дальности полёта или при столкновении с живым объектом.
@@ -61,21 +61,21 @@
  <pre style="display:inline;" class="d_inline_code">wizard.angle + move.castAngle</pre>, а абсолютное значение скорости равно <pre style="display:inline;" class="d_inline_code">game.fireballSpeed</pre>.
  Столкновения магического снаряда и создавшего его волшебника игнорируются.
  <br>
- Требует <pre style="display:inline;" class="d_inline_code">game.fireballManacost</pre> единиц магической энергии и изучения умения <pre style="display:inline;" class="d_inline_code"><u>Fireball</u></pre>.<br><br>
+ Требует <pre style="display:inline;" class="d_inline_code">game.fireballManacost</pre> единиц магической энергии и изучения умения <pre style="display:inline;" class="d_inline_code"><u>fireball</u></pre>.<br><br>
 
 </dd>
-<dt><big><a name="ActionType.Haste"></a><u>Haste</u></big></dt>
+<dt><big><a name="ActionType.haste"></a><u>haste</u></big></dt>
 <dd>Временно ускорить волшебника с идентификатором <pre style="display:inline;" class="d_inline_code">move.statusTargetId</pre> или самого себя, если такой волшебник
  не найден.
  <br>
- Требует <pre style="display:inline;" class="d_inline_code">game.hasteManacost</pre> единиц магической энергии и изучения умения <pre style="display:inline;" class="d_inline_code"><u>Haste</u></pre>.<br><br>
+ Требует <pre style="display:inline;" class="d_inline_code">game.hasteManacost</pre> единиц магической энергии и изучения умения <pre style="display:inline;" class="d_inline_code"><u>haste</u></pre>.<br><br>
 
 </dd>
-<dt><big><a name="ActionType.Shield"></a><u>Shield</u></big></dt>
+<dt><big><a name="ActionType.shield"></a><u>shield</u></big></dt>
 <dd>На время создать магический щит вокруг волшебника с идентификатором <pre style="display:inline;" class="d_inline_code">move.statusTargetId</pre> или самого себя,
  если такой волшебник не найден.
  <br>
- Требует <pre style="display:inline;" class="d_inline_code">game.shieldManacost</pre> единиц магической энергии и изучения умения <pre style="display:inline;" class="d_inline_code"><u>Shield</u></pre>.<br><br>
+ Требует <pre style="display:inline;" class="d_inline_code">game.shieldManacost</pre> единиц магической энергии и изучения умения <pre style="display:inline;" class="d_inline_code"><u>shield</u></pre>.<br><br>
 
 </dd>
 </dl>

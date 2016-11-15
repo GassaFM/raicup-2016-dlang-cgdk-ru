@@ -47,7 +47,7 @@
  которое может преодолеть выпущенный им магический снаряд.
  <br>
  Также является максимально возможной дальностью применения заклинаний, накладывающих на цель магический статус
- (<pre style="display:inline;" class="d_inline_code">Haste</pre> и <pre style="display:inline;" class="d_inline_code">Shield</pre>).<br><br>
+ (<pre style="display:inline;" class="d_inline_code">haste</pre> и <pre style="display:inline;" class="d_inline_code">shield</pre>).<br><br>
 
 </dd>
 <dt><big><a name="Wizard.xp"></a>immutable int <u>xp</u>;
@@ -88,10 +88,10 @@
 Возвращает массив целых неотрицательных чисел. Каждая ячейка массива содержит значение количества тиков,
  оставшегося до совершения следующего действия с соответствующим индексом.
  <br>
- Например, <pre style="display:inline;" class="d_inline_code"><u>remainingCooldownTicksByAction</u>[0]</pre> соответствует действию <pre style="display:inline;" class="d_inline_code">None</pre> и всегда равно нулю.
- <pre style="display:inline;" class="d_inline_code"><u>remainingCooldownTicksByAction</u>[1]</pre> соответствует действию <pre style="display:inline;" class="d_inline_code">Staff</pre> и равно количеству тиков,
+ Например, <pre style="display:inline;" class="d_inline_code"><u>remainingCooldownTicksByAction</u>[0]</pre> соответствует действию <pre style="display:inline;" class="d_inline_code">none</pre> и всегда равно нулю.
+ <pre style="display:inline;" class="d_inline_code"><u>remainingCooldownTicksByAction</u>[1]</pre> соответствует действию <pre style="display:inline;" class="d_inline_code">staff</pre> и равно количеству тиков,
  оставшемуся до совершения данного действия. <pre style="display:inline;" class="d_inline_code"><u>remainingCooldownTicksByAction</u>[2]</pre> соответствует действию
- <pre style="display:inline;" class="d_inline_code">MagicMissile</pre> и так далее.
+ <pre style="display:inline;" class="d_inline_code">magicMissile</pre> и так далее.
  <br>
  Для совершения произвольного действия <pre style="display:inline;" class="d_inline_code">actionType</pre> необходимо, чтобы оба значения
  <pre style="display:inline;" class="d_inline_code">remainingActionCooldownTicks</pre> и <pre style="display:inline;" class="d_inline_code"><u>remainingCooldownTicksByAction</u>[actionType.ordinal ()]</pre> были равны

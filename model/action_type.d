@@ -14,7 +14,7 @@ enum ActionType : byte
     /**
      * Ничего не делать.
      */
-    None,
+    none,
 
     /**
      * Ударить посохом.
@@ -23,7 +23,7 @@ enum ActionType : byte
      * Расстояние от центра волшебника до центра цели не должно превышать значение
      * `game.staffRange + livingUnit.radius`.
      */
-    Staff,
+    staff,
 
     /**
      * Создать магическую ракету.
@@ -36,7 +36,7 @@ enum ActionType : byte
      * $(BR)
      * Требует `game.magicMissileManacost` единиц магической энергии.
      */
-    MagicMissile,
+    magicMissile,
 
     /**
      * Создать ледяную стрелу.
@@ -47,9 +47,9 @@ enum ActionType : byte
      * `wizard.angle + move.castAngle`, а абсолютное значение скорости равно `game.frostBoltSpeed`.
      * Столкновения магического снаряда и создавшего его волшебника игнорируются.
      * $(BR)
-     * Требует `game.frostBoltManacost` единиц магической энергии и изучения умения `FrostBolt`.
+     * Требует `game.frostBoltManacost` единиц магической энергии и изучения умения `frostBolt`.
      */
-    FrostBolt,
+    frostBolt,
 
     /**
      * Создать огненный шар.
@@ -61,23 +61,23 @@ enum ActionType : byte
      * `wizard.angle + move.castAngle`, а абсолютное значение скорости равно `game.fireballSpeed`.
      * Столкновения магического снаряда и создавшего его волшебника игнорируются.
      * $(BR)
-     * Требует `game.fireballManacost` единиц магической энергии и изучения умения `Fireball`.
+     * Требует `game.fireballManacost` единиц магической энергии и изучения умения `fireball`.
      */
-    Fireball,
+    fireball,
 
     /**
      * Временно ускорить волшебника с идентификатором `move.statusTargetId` или самого себя, если такой волшебник
      * не найден.
      * $(BR)
-     * Требует `game.hasteManacost` единиц магической энергии и изучения умения `Haste`.
+     * Требует `game.hasteManacost` единиц магической энергии и изучения умения `haste`.
      */
-    Haste,
+    haste,
 
     /**
      * На время создать магический щит вокруг волшебника с идентификатором `move.statusTargetId` или самого себя,
      * если такой волшебник не найден.
      * $(BR)
-     * Требует `game.shieldManacost` единиц магической энергии и изучения умения `Shield`.
+     * Требует `game.shieldManacost` единиц магической энергии и изучения умения `shield`.
      */
-    Shield
+    shield
 }

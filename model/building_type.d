@@ -8,10 +8,10 @@ enum BuildingType : byte
     /**
      * Охранная башня.
      */
-    GuardianTower,
+    guardianTower,
 
     /**
      * База фракции.
      */
-    FactionBase
+    factionBase
 }

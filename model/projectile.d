@@ -7,31 +7,31 @@ import model.faction;
 /**
  * Класс, определяющий снаряд. Содержит также все свойства круглого юнита.
  */
-class Projectile : CircularUnit
+immutable class Projectile : CircularUnit
 {
     /**
      * Returns: Возвращает тип снаряда.
      */
-    immutable ProjectileType type;
+    ProjectileType type;
     /**
      * Returns: Возвращает идентификатор юнита, создавшего данный снаряд.
      */
-    immutable long ownerUnitId;
+    long ownerUnitId;
     /**
      * Returns: Возвращает идентификатор игрока, юнит которого создал данный снаряд или `-1`.
      */
-    immutable long ownerPlayerId;
+    long ownerPlayerId;
 
-    immutable this (
+    this (
         long id,
         double x,
         double y,
         double speedX,
         double speedY,
         double angle,
-        immutable (Faction) faction,
+        immutable Faction faction,
         double radius,
-        immutable (ProjectileType) type,
+        immutable ProjectileType type,
         long ownerUnitId,
         long ownerPlayerId)
     {

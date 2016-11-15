@@ -1,20 +1,28 @@
-26c26
+10c10
+< immutable class Move
+---
+> class Move
+25c25
 <     double speed;
 ---
 >     double speed = 0.0;
-40c40
+39c39
 <     double strafeSpeed;
 ---
 >     double strafeSpeed = 0.0;
-52c52
+51c51
 <     double turn;
 ---
 >     double turn = 0.0;
-72c72
+71c71
 <     double castAngle;
 ---
 >     double castAngle = 0.0;
-86c86
+85c85
 <     double minCastDistance;
 ---
 >     double minCastDistance = 0.0;
+140c140
+<     Message [] messages;
+---
+>     immutable (Message) [] messages;

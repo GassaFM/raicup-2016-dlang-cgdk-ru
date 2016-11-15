@@ -24,56 +24,76 @@ string toSnakeCase (string word)
 }
 
 // if future use: won't work for the case A_BCD
-string convertUpperSnakeToCamel (string line)
+string convertSnakeCapsToCamel (string line)
 {
-	int wordPosition = 0;
-	bool isFirstUpper = false;
-	bool isSecondUpper = false;
-	bool isPrevUnderscore = false;
-	char [] res;
-	foreach (c; line)
+	string [] parts;
+	bool isIdentifier = false;
+	string cur;
+	foreach (dchar c; line)
 	{
-		if (!c.isAlphaNum && c != '_')
+		bool isIdentifierNext = (c.isAlphaNum || c == '_');
+		if (isIdentifier != isIdentifierNext)
 		{
-			wordPosition = 0;
-			if (res.length >= 2 && res[$ - 2..$] == "Pi")
-			{
-				res[$ - 1] = cast (char)
-				    (res[$ - 1].toUpper ());
-			}
+			parts ~= cur;
+			cur = "";
+			isIdentifier = isIdentifierNext;
 		}
-		else
-		{
-			wordPosition += 1;
-			if (wordPosition == 1)
-			{
-				isFirstUpper = c.isUpper;
-			}
-			else if (wordPosition == 2)
-			{
-				isSecondUpper = c.isUpper;
-			}
-		}
-
-		if (wordPosition >= 2 && isFirstUpper && isSecondUpper)
-		{
-			if (isPrevUnderscore)
-			{
-				res ~= toUpper (c);
-			}
-			else if (c != '_')
-			{
-				res ~= toLower (c);
-			}
-		}
-		else
-		{
-			res ~= c;
-		}
-
-		isPrevUnderscore = (c == '_');
+		cur ~= c;
 	}
-	return res.idup;
+	parts ~= cur;
+
+	string res;
+	foreach (part; parts)
+	{
+		if (part.empty)
+		{
+			continue;
+		}
+
+		bool isIdentifierPart = (part.front.isAlphaNum ||
+		    part.front == '_');
+		if (!isIdentifierPart)
+		{
+			res ~= part;
+			continue;
+		}
+
+		bool isSnakeCaps = (part.length >= 2) &&
+		    part[0].isUpper && part[1].isUpper;
+		if (!isSnakeCaps)
+		{
+			res ~= part;
+			continue;
+		}
+
+		if (part == "PI")
+		{
+			res ~= part;
+			continue;
+		}
+
+		string modPart;
+		bool isPrevUnderscore = false;
+		foreach (c; part)
+		{
+			if (c == '_')
+			{
+				isPrevUnderscore = true;
+				continue;
+			}
+			else if (isPrevUnderscore)
+			{
+				modPart ~= c.toUpper ().text;
+			}
+			else
+			{
+				modPart ~= c.toLower ().text;
+			}
+			isPrevUnderscore = false;
+		}
+		res ~= modPart;
+	}
+	return res;
 }
 
 bool isCommentLine (string line)
@@ -135,6 +155,7 @@ string convertComments (string line)
 	{
 		string res = line;
 		res = res.replace ("<p>", "$(BR)");
+		res = res.replace ("<p/>", "$(BR)");
 		res = res.replace ("<ul>", "$(UL");
 		res = res.replace ("</ul>", ")");
 		res = res.replace ("<li>", "$(LI");
@@ -187,7 +208,7 @@ string convertMisc (string line)
 	string res = line;
 	res = res.replace ("public ", "");
 	res = res.replace ("private ", "");
-	res = res.replace ("final ", "immutable ");
+	res = res.replace ("final ", "");
 	res = res.replace (".0D", ".0");
 	res = res.replace ("[]", " []");
 	res = res.replace ("(", " (");
@@ -199,7 +220,7 @@ string convertMisc (string line)
 		auto parts = res.findSplit ("Arrays.copyOf (");
 		string argument = parts[2].until (",").text;
 		parts[2].findSkip (")");
-		res = parts[0] ~ argument ~ ".idup" ~ parts[2];
+		res = parts[0] ~ argument ~ parts[2];
 	}
 	return res;
 }
@@ -325,17 +346,10 @@ class Method
 				pos += 1;
 				assert (pos < line.length);
 			}
-			if (line[pos].isUpper)
+			if (line[pos].isUpper || line.canFind ("[]"))
 			{
-				int pos2 = pos;
-				while (!line[pos2].isWhite)
-				{
-					pos2 += 1;
-					assert (pos2 < line.length);
-				}
-				line = line[0..pos] ~ "immutable (" ~
-				    line[pos..pos2] ~ ")" ~
-				    line[pos2..$];
+				line = line[0..pos] ~ "immutable " ~
+				    line[pos..$];
 			}
 		}
 	}
@@ -450,8 +464,8 @@ class Class
 				auto parts = curMethod.headLines.front
 				    .findSplit (name);
 				curMethod.headLines.front =
-				    parts[0] ~ "immutable this" ~ parts[2];
-				curMethod.name = "immutable this";
+				    parts[0] ~ "this" ~ parts[2];
+				curMethod.name = "this";
 				curMethod.headLines.back =
 				    curMethod.headLines.back
 				    .until (" const").text;
@@ -511,7 +525,8 @@ class Class
 		postDeclaration = name;
 		name = name.until (" ").text;
 		postDeclaration = postDeclaration.find (" ").until (" {").text;
-		headLine = preDeclaration ~ "class " ~ name ~ postDeclaration;
+		headLine = preDeclaration ~ "immutable class " ~ name ~
+		    postDeclaration;
 		assert (lines.front.count ("{") == 1 &&
 		    lines.front.count ("}") == 0);
 		assert (lines.back.count ("{") == 0 &&
@@ -683,7 +698,7 @@ void translateFile (string fileName)
 	    // remove trailing whitespace
 	    .map !(line => line.stripRight)
 	    // globally convert all-uppercase names
-	    .map !(line => line.convertUpperSnakeToCamel)
+	    .map !(line => line.convertSnakeCapsToCamel)
 	    // convert miscellaneous differences
 	    .map !(line => line.convertMisc)
 	    // globally convert comments
@@ -704,7 +719,7 @@ void translateFile (string fileName)
 				mark[name] = true;
 			}
 		}
-		if (cur.canFind ("hypot"))
+		if (cur.canFind ("atan2"))
 		{
 			hasMath = true;
 		}

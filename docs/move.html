@@ -15,7 +15,7 @@
  <br>
  Установка скорости перемещения по умолчанию лежит в интервале от <pre style="display:inline;" class="d_inline_code">-game.wizardBackwardSpeed</pre> до
  <pre style="display:inline;" class="d_inline_code">game.wizardForwardSpeed</pre>, однако границы интервала могут быть расширены в зависимости от изученных
- волшебником умений, от действия некоторых аур, а также в случае действия статуса <pre style="display:inline;" class="d_inline_code">Hastened</pre>.
+ волшебником умений, от действия некоторых аур, а также в случае действия статуса <pre style="display:inline;" class="d_inline_code">hastened</pre>.
  <br>
  Значения, выходящие за интервал, будут приведены к ближайшей его границе.
  Положительные значения соответствуют движению вперёд.
@@ -30,7 +30,7 @@
  <br>
  Установка скорости перемещения по умолчанию лежит в интервале от <pre style="display:inline;" class="d_inline_code">-game.wizardStrafeSpeed</pre> до
  <pre style="display:inline;" class="d_inline_code">game.wizardStrafeSpeed</pre>, однако границы интервала могут быть расширены в зависимости от изученных
- волшебником умений, от действия некоторых аур, а также в случае действия статуса <pre style="display:inline;" class="d_inline_code">Hastened</pre>.
+ волшебником умений, от действия некоторых аур, а также в случае действия статуса <pre style="display:inline;" class="d_inline_code">hastened</pre>.
  <br>
  Значения, выходящие за интервал, будут приведены к ближайшей его границе.
  Положительные значения соответствуют движению направо.
@@ -42,10 +42,10 @@
 <dt><big><a name="Move.turn"></a>double <u>turn</u>;
 </big></dt>
 <dd>Устанавливает угол поворота волшебника.
- <p/>
+ <br>
  Угол поворота задаётся в радианах относительно текущего направления волшебника и обычно ограничен интервалом от
  <pre style="display:inline;" class="d_inline_code">-game.wizardMaxTurnAngle</pre> до <pre style="display:inline;" class="d_inline_code">game.wizardMaxTurnAngle</pre>. Если на волшебника действует магический
- статус <pre style="display:inline;" class="d_inline_code">Hastened</pre>, то нижнюю и правую границу интервала необходимо умножить на
+ статус <pre style="display:inline;" class="d_inline_code">hastened</pre>, то нижнюю и правую границу интервала необходимо умножить на
  <pre style="display:inline;" class="d_inline_code">1.0 + game.hastenedRotationBonusFactor</pre>.
  <br>
  Значения, выходящие за интервал, будут приведены к ближайшей его границе.
@@ -94,7 +94,7 @@
 <dd>Устанавливает дальнюю границу боевого применения магического снаряда.
  <br>
  Если расстояние от центра снаряда до точки его появления больше, чем значение данного параметра, то снаряд
- убирается из игрового мира. При этом, снаряд типа <pre style="display:inline;" class="d_inline_code">Fireball</pre> детонирует.
+ убирается из игрового мира. При этом, снаряд типа <pre style="display:inline;" class="d_inline_code">fireball</pre> детонирует.
  <br>
  Значение параметра по умолчанию заведомо выше максимальной дальности полёта любого типа снарядов в игре.
  <br>
@@ -128,7 +128,7 @@
  Изучение умений доступно не во всех режимах игры.<br><br>
 
 </dd>
-<dt><big><a name="Move.messages"></a>Message[] <u>messages</u>;
+<dt><big><a name="Move.messages"></a>immutable(Message)[] <u>messages</u>;
 </big></dt>
 <dd>Устанавливает сообщения для волшебников дружественной фракции.
  <br>

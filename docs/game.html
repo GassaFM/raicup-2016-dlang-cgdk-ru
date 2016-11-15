@@ -177,7 +177,7 @@
 Возвращает базовое ограничение скорости волшебника при движении вперёд.
  <br>
  Эффективное ограничение может быть выше в результате действия некоторых аур и/или изучения волшебником некоторых
- умений, а также в результате действия статуса <pre style="display:inline;" class="d_inline_code">Hastened</pre>.<br><br>
+ умений, а также в результате действия статуса <pre style="display:inline;" class="d_inline_code">hastened</pre>.<br><br>
 
 </dd>
 <dt><big><a name="Game.wizardBackwardSpeed"></a>immutable double <u>wizardBackwardSpeed</u>;
@@ -186,7 +186,7 @@
 Возвращает базовое ограничение скорости волшебника при движении назад.
  <br>
  Эффективное ограничение может быть выше в результате действия некоторых аур и/или изучения волшебником некоторых
- умений, а также в результате действия статуса <pre style="display:inline;" class="d_inline_code">Hastened</pre>.<br><br>
+ умений, а также в результате действия статуса <pre style="display:inline;" class="d_inline_code">hastened</pre>.<br><br>
 
 </dd>
 <dt><big><a name="Game.wizardStrafeSpeed"></a>immutable double <u>wizardStrafeSpeed</u>;
@@ -195,7 +195,7 @@
 Возвращает базовое ограничение скорости волшебника при движении боком.
  <br>
  Эффективное ограничение может быть выше в результате действия некоторых аур и/или изучения волшебником некоторых
- умений, а также в результате действия статуса <pre style="display:inline;" class="d_inline_code">Hastened</pre>.<br><br>
+ умений, а также в результате действия статуса <pre style="display:inline;" class="d_inline_code">hastened</pre>.<br><br>
 
 </dd>
 <dt><big><a name="Game.wizardBaseLife"></a>immutable int <u>wizardBaseLife</u>;
@@ -252,7 +252,7 @@
 Возвращает базовое ограничение на изменение угла поворота волшебника за один тик.
  <br>
  Эффективное ограничение может быть выше в <pre style="display:inline;" class="d_inline_code">1.0 + hastenedRotationBonusFactor</pre> раз в результате действия
- статуса <pre style="display:inline;" class="d_inline_code">Hastened</pre>.<br><br>
+ статуса <pre style="display:inline;" class="d_inline_code">hastened</pre>.<br><br>
 
 </dd>
 <dt><big><a name="Game.wizardMaxResurrectionDelayTicks"></a>immutable int <u>wizardMaxResurrectionDelayTicks</u>;
@@ -424,8 +424,8 @@
 <dt><big><a name="Game.factionMinionAppearanceIntervalTicks"></a>immutable int <u>factionMinionAppearanceIntervalTicks</u>;
 </big></dt>
 <dd><b>Returns:</b><br>
-Возвращает интервал, с которым появляются миньоны двух противостоящих фракций (<pre style="display:inline;" class="d_inline_code">Academy</pre> и
- <pre style="display:inline;" class="d_inline_code">Renegades</pre>).
+Возвращает интервал, с которым появляются миньоны двух противостоящих фракций (<pre style="display:inline;" class="d_inline_code">academy</pre> и
+ <pre style="display:inline;" class="d_inline_code">renegades</pre>).
  <br>
  Миньоны каждой из этих фракций появляются тремя группами (по одной на дорожку) недалеко от своей базы. Группа
  состоит и трёх орков и одного фетиша. Сразу после появления миньоны начинают продвижение по своей дорожке в
@@ -603,7 +603,7 @@
  <pre style="display:inline;" class="d_inline_code">fireballExplosionMinDamage</pre>. Если расстояние от центра взрыва до ближайшей точки живого юнита превышает
  <pre style="display:inline;" class="d_inline_code">fireballExplosionMinDamageRange</pre>, то урон ему не наносится.
  <br>
- Если живой юнит получил какой-либо урон от взрыва &lt;&lt;Огненного шара&gt;&gt;, то он загорается (<pre style="display:inline;" class="d_inline_code">Burning</pre>).<br><br>
+ Если живой юнит получил какой-либо урон от взрыва &lt;&lt;Огненного шара&gt;&gt;, то он загорается (<pre style="display:inline;" class="d_inline_code">burning</pre>).<br><br>
 
 </dd>
 <dt><big><a name="Game.fireballExplosionMinDamage"></a>immutable int <u>fireballExplosionMinDamage</u>;
@@ -694,25 +694,25 @@
 <dt><big><a name="Game.burningDurationTicks"></a>immutable int <u>burningDurationTicks</u>;
 </big></dt>
 <dd><b>Returns:</b><br>
-Возвращает длительность действия статуса <pre style="display:inline;" class="d_inline_code">Burning</pre>.<br><br>
+Возвращает длительность действия статуса <pre style="display:inline;" class="d_inline_code">burning</pre>.<br><br>
 
 </dd>
 <dt><big><a name="Game.burningSummaryDamage"></a>immutable int <u>burningSummaryDamage</u>;
 </big></dt>
 <dd><b>Returns:</b><br>
-Возвращает суммарный урон, получаемый живым юнитом за время действия статуса <pre style="display:inline;" class="d_inline_code">Burning</pre>.<br><br>
+Возвращает суммарный урон, получаемый живым юнитом за время действия статуса <pre style="display:inline;" class="d_inline_code">burning</pre>.<br><br>
 
 </dd>
 <dt><big><a name="Game.empoweredDurationTicks"></a>immutable int <u>empoweredDurationTicks</u>;
 </big></dt>
 <dd><b>Returns:</b><br>
-Возвращает длительность действия статуса <pre style="display:inline;" class="d_inline_code">Empowered</pre>.<br><br>
+Возвращает длительность действия статуса <pre style="display:inline;" class="d_inline_code">empowered</pre>.<br><br>
 
 </dd>
 <dt><big><a name="Game.empoweredDamageFactor"></a>immutable double <u>empoweredDamageFactor</u>;
 </big></dt>
 <dd><b>Returns:</b><br>
-Возвращает мультипликатор урона, наносимого живым юнитом под действием статуса <pre style="display:inline;" class="d_inline_code">Empowered</pre>.
+Возвращает мультипликатор урона, наносимого живым юнитом под действием статуса <pre style="display:inline;" class="d_inline_code">empowered</pre>.
  <br>
  Мультипликатор применяется к ударам в ближнем бою, прямым попаданиям снарядов, а также взрыву &lt;&lt;Огненного шара&gt;&gt;,
  но не применяется к урону, получаемому от статусов.<br><br>
@@ -721,28 +721,28 @@
 <dt><big><a name="Game.frozenDurationTicks"></a>immutable int <u>frozenDurationTicks</u>;
 </big></dt>
 <dd><b>Returns:</b><br>
-Возвращает длительность действия статуса <pre style="display:inline;" class="d_inline_code">Frozen</pre>.<br><br>
+Возвращает длительность действия статуса <pre style="display:inline;" class="d_inline_code">frozen</pre>.<br><br>
 
 </dd>
 <dt><big><a name="Game.hastenedDurationTicks"></a>immutable int <u>hastenedDurationTicks</u>;
 </big></dt>
 <dd><b>Returns:</b><br>
-Возвращает длительность действия статуса <pre style="display:inline;" class="d_inline_code">Hastened</pre>.<br><br>
+Возвращает длительность действия статуса <pre style="display:inline;" class="d_inline_code">hastened</pre>.<br><br>
 
 </dd>
 <dt><big><a name="Game.hastenedBonusDurationFactor"></a>immutable double <u>hastenedBonusDurationFactor</u>;
 </big></dt>
 <dd><b>Returns:</b><br>
-Возвращает мультилпикатор длительности действия статуса <pre style="display:inline;" class="d_inline_code">Hastened</pre> в случае подбора бонуса.<br><br>
+Возвращает мультилпикатор длительности действия статуса <pre style="display:inline;" class="d_inline_code">hastened</pre> в случае подбора бонуса.<br><br>
 
 </dd>
 <dt><big><a name="Game.hastenedMovementBonusFactor"></a>immutable double <u>hastenedMovementBonusFactor</u>;
 </big></dt>
 <dd><b>Returns:</b><br>
-Возвращает относительное увеличение скорости перемещения в результате дествия статуса <pre style="display:inline;" class="d_inline_code">Hastened</pre>.
+Возвращает относительное увеличение скорости перемещения в результате дествия статуса <pre style="display:inline;" class="d_inline_code">hastened</pre>.
  <br>
- Увеличение скорости от действия статуса <pre style="display:inline;" class="d_inline_code">Hastened</pre> и увеличение скорости в результате изучения умений,
- являющихся пререквизитами умения <pre style="display:inline;" class="d_inline_code">Haste</pre>, являются аддитивными. Таким образом, максимальное значение
+ Увеличение скорости от действия статуса <pre style="display:inline;" class="d_inline_code">hastened</pre> и увеличение скорости в результате изучения умений,
+ являющихся пререквизитами умения <pre style="display:inline;" class="d_inline_code">haste</pre>, являются аддитивными. Таким образом, максимальное значение
  скорости волшебника составляет
  <pre style="display:inline;" class="d_inline_code">1.0 + 4.0 * movementBonusFactorPerSkillLevel + <u>hastenedMovementBonusFactor</u></pre> от базовой.<br><br>
 
@@ -750,19 +750,19 @@
 <dt><big><a name="Game.hastenedRotationBonusFactor"></a>immutable double <u>hastenedRotationBonusFactor</u>;
 </big></dt>
 <dd><b>Returns:</b><br>
-Возвращает относительное увеличение скорости поворота в результате дествия статуса <pre style="display:inline;" class="d_inline_code">Hastened</pre>.<br><br>
+Возвращает относительное увеличение скорости поворота в результате дествия статуса <pre style="display:inline;" class="d_inline_code">hastened</pre>.<br><br>
 
 </dd>
 <dt><big><a name="Game.shieldedDurationTicks"></a>immutable int <u>shieldedDurationTicks</u>;
 </big></dt>
 <dd><b>Returns:</b><br>
-Возвращает длительность действия статуса <pre style="display:inline;" class="d_inline_code">Shielded</pre>.<br><br>
+Возвращает длительность действия статуса <pre style="display:inline;" class="d_inline_code">shielded</pre>.<br><br>
 
 </dd>
 <dt><big><a name="Game.shieldedBonusDurationFactor"></a>immutable double <u>shieldedBonusDurationFactor</u>;
 </big></dt>
 <dd><b>Returns:</b><br>
-Возвращает мультилпикатор длительности действия статуса <pre style="display:inline;" class="d_inline_code">Shielded</pre> в случае подбора бонуса.<br><br>
+Возвращает мультилпикатор длительности действия статуса <pre style="display:inline;" class="d_inline_code">shielded</pre> в случае подбора бонуса.<br><br>
 
 </dd>
 <dt><big><a name="Game.shieldedDirectDamageAbsorptionFactor"></a>immutable double <u>shieldedDirectDamageAbsorptionFactor</u>;
@@ -784,7 +784,7 @@
 </big></dt>
 <dd><b>Returns:</b><br>
 Возвращает абсолютное увеличение дальности заклинаний волшебника за каждое последовательное изучение
- умения, являющегося одним из пререквизитов умения <pre style="display:inline;" class="d_inline_code">AdvancedMagicMissile</pre>.<br><br>
+ умения, являющегося одним из пререквизитов умения <pre style="display:inline;" class="d_inline_code">advancedMagicMissile</pre>.<br><br>
 
 </dd>
 <dt><big><a name="Game.magicalDamageBonusPerSkillLevel"></a>immutable int <u>magicalDamageBonusPerSkillLevel</u>;
@@ -792,24 +792,24 @@
 <dd><b>Returns:</b><br>
 Возвращает абсолютное увеличение урона, наносимого волшебником в результате прямых попаданий магических
  снарядов и взрыва &lt;&lt;Огненного шара&gt;&gt;, за каждое последовательное изучение умения, являющегося одним из
- пререквизитов умения <pre style="display:inline;" class="d_inline_code">FrostBolt</pre>.<br><br>
+ пререквизитов умения <pre style="display:inline;" class="d_inline_code">frostBolt</pre>.<br><br>
 
 </dd>
 <dt><big><a name="Game.staffDamageBonusPerSkillLevel"></a>immutable int <u>staffDamageBonusPerSkillLevel</u>;
 </big></dt>
 <dd><b>Returns:</b><br>
 Возвращает абсолютное увеличение урона, наносимого волшебником в ближнем бою, за каждое последовательное
- изучение умения, являющегося одним из пререквизитов умения <pre style="display:inline;" class="d_inline_code">Fireball</pre>.<br><br>
+ изучение умения, являющегося одним из пререквизитов умения <pre style="display:inline;" class="d_inline_code">fireball</pre>.<br><br>
 
 </dd>
 <dt><big><a name="Game.movementBonusFactorPerSkillLevel"></a>immutable double <u>movementBonusFactorPerSkillLevel</u>;
 </big></dt>
 <dd><b>Returns:</b><br>
 Возвращает относительное увеличение скорости перемещения за каждое последовательное изучение умения,
- являющегося одним из пререквизитов умения <pre style="display:inline;" class="d_inline_code">Haste</pre>.
+ являющегося одним из пререквизитов умения <pre style="display:inline;" class="d_inline_code">haste</pre>.
  <br>
- Увеличение скорости от действия статуса <pre style="display:inline;" class="d_inline_code">Hastened</pre> и увеличение скорости в результате изучения умений,
- являющихся пререквизитами умения <pre style="display:inline;" class="d_inline_code">Haste</pre>, являются аддитивными. Таким образом, максимальное значение
+ Увеличение скорости от действия статуса <pre style="display:inline;" class="d_inline_code">hastened</pre> и увеличение скорости в результате изучения умений,
+ являющихся пререквизитами умения <pre style="display:inline;" class="d_inline_code">haste</pre>, являются аддитивными. Таким образом, максимальное значение
  скорости волшебника составляет
  <pre style="display:inline;" class="d_inline_code">1.0 + 4.0 * <u>movementBonusFactorPerSkillLevel</u> + hastenedMovementBonusFactor</pre> от базовой.<br><br>
 
@@ -819,7 +819,7 @@
 <dd><b>Returns:</b><br>
 Возвращает абсолютное уменьшение урона, получаемого волшебником в результате прямых попаданий магических
  снарядов, взрыва &lt;&lt;Огненного шара&gt;&gt; и атак строений, за каждое последовательное изучение умения, являющегося
- одним из пререквизитов умения <pre style="display:inline;" class="d_inline_code">Shield</pre>.<br><br>
+ одним из пререквизитов умения <pre style="display:inline;" class="d_inline_code">shield</pre>.<br><br>
 
 </dd>
 </dl>

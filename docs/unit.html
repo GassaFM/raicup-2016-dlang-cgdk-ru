@@ -56,7 +56,7 @@
 Возвращает фракцию, к которой принадлежит данный юнит.<br><br>
 
 </dd>
-<dt><big><a name="Unit.getAngleTo"></a>const double <u>getAngleTo</u>(double <i>x</i>, double <i>y</i>);
+<dt><big><a name="Unit.getAngleTo"></a>immutable double <u>getAngleTo</u>(double <i>x</i>, double <i>y</i>);
 </big></dt>
 <dd><b>Params:</b><br>
 <table><tr><td>double <i>x</i></td>
@@ -69,10 +69,10 @@
  данного объекта и вектором из центра данного объекта к указанной точке.<br><br>
 
 </dd>
-<dt><big><a name="Unit.getAngleTo.2"></a>const double <u>getAngleTo</u>(immutable(Unit) <i>unit</i>);
+<dt><big><a name="Unit.getAngleTo.2"></a>immutable double <u>getAngleTo</u>(immutable Unit <i>unit</i>);
 </big></dt>
 <dd><b>Params:</b><br>
-<table><tr><td>immutable(Unit) <i>unit</i></td>
+<table><tr><td>Unit <i>unit</i></td>
 <td>Объект, к центру которого необходимо определить угол.</td></tr>
 </table><br>
 <b>Returns:</b><br>
@@ -80,7 +80,7 @@
  данного объекта и вектором из центра данного объекта к центру указанного объекта.<br><br>
 
 </dd>
-<dt><big><a name="Unit.getDistanceTo"></a>const double <u>getDistanceTo</u>(double <i>x</i>, double <i>y</i>);
+<dt><big><a name="Unit.getDistanceTo"></a>immutable double <u>getDistanceTo</u>(double <i>x</i>, double <i>y</i>);
 </big></dt>
 <dd><b>Params:</b><br>
 <table><tr><td>double <i>x</i></td>
@@ -92,10 +92,10 @@
 Возвращает расстояние до точки от центра данного объекта.<br><br>
 
 </dd>
-<dt><big><a name="Unit.getDistanceTo.2"></a>const double <u>getDistanceTo</u>(immutable(Unit) <i>unit</i>);
+<dt><big><a name="Unit.getDistanceTo.2"></a>immutable double <u>getDistanceTo</u>(immutable Unit <i>unit</i>);
 </big></dt>
 <dd><b>Params:</b><br>
-<table><tr><td>immutable(Unit) <i>unit</i></td>
+<table><tr><td>Unit <i>unit</i></td>
 <td>Объект, до центра которого необходимо определить расстояние.</td></tr>
 </table><br>
 <b>Returns:</b><br>
