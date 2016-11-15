@@ -5,6 +5,8 @@ import model.wizard;
 
 immutable class PlayerContext
 {
+nothrow pure @safe @nogc:
+
     Wizard [] wizards;
     World world;
 

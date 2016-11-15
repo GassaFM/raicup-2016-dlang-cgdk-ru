@@ -2,35 +2,35 @@
 < immutable class Move
 ---
 > class Move
-25c25
+27c27
 <     double speed;
 ---
 >     double speed = 0.0;
-39c39
+41c41
 <     double strafeSpeed;
 ---
 >     double strafeSpeed = 0.0;
-51c51
+53c53
 <     double turn;
 ---
 >     double turn = 0.0;
-58c58
+60c60
 <     ActionType action;
 ---
 >     ActionType action = ActionType.unknown;
-71c71
+73c73
 <     double castAngle;
 ---
 >     double castAngle = 0.0;
-85c85
+87c87
 <     double minCastDistance;
 ---
 >     double minCastDistance = 0.0;
-121c121
+123c123
 <     SkillType skillToLearn;
 ---
 >     SkillType skillToLearn = SkillType.unknown;
-140c140
+142c142
 <     Message [] messages;
 ---
 >     immutable (Message) [] messages;

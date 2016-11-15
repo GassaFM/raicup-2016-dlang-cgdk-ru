@@ -543,6 +543,8 @@ class Class
 		res ~= headComment;
 		res ~= headLine;
 		res ~= "{";
+		res ~= "nothrow pure @safe @nogc:";
+		res ~= "";
 		foreach (curField; fields)
 		{
 			res ~= curField.write ();

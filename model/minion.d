@@ -13,6 +13,8 @@ import model.faction;
  */
 immutable class Minion : LivingUnit
 {
+nothrow pure @safe @nogc:
+
     /**
      * Returns: Возвращает тип миньона.
      */

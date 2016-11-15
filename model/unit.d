@@ -8,6 +8,8 @@ import std.math;
  */
 abstract immutable class Unit
 {
+nothrow pure @safe @nogc:
+
     /**
      * Returns: Возвращает уникальный идентификатор объекта.
      */
