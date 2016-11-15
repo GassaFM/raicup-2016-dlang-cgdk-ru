@@ -12,7 +12,7 @@ immutable class PlayerContext
         immutable Wizard [] wizards,
         immutable World world)
     {
-        this.wizards = wizards == null ? null : wizards;
+        this.wizards = wizards;
         this.world = world;
     }
 }

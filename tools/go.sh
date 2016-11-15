@@ -7,7 +7,7 @@ rm java_to_d.obj
 mkdir -p ../model
 mkdir -p ../docs
 ./java_to_d
-for f in move world ; do
+for f in move player_context world ; do
 	patch ../model/$f.d $f.d.diff
 	unix2dos ../model/$f.d
 done
