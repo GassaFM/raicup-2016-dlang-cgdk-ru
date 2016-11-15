@@ -7,10 +7,10 @@ import model.status;
 /**
  * Класс, определяющий дерево. Содержит также все свойства живого юнита.
  */
-class Tree : LivingUnit
+immutable class Tree : LivingUnit
 {
 
-    immutable this (
+    this (
         long id,
         double x,
         double y,

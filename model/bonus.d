@@ -7,14 +7,14 @@ import model.faction;
 /**
  * Класс, определяющий бонус --- неподвижный полезный объект. Содержит также все свойства круглого юнита.
  */
-class Bonus : CircularUnit
+immutable class Bonus : CircularUnit
 {
     /**
      * Returns: Возвращает тип бонуса.
      */
-    immutable BonusType type;
+    BonusType type;
 
-    immutable this (
+    this (
         long id,
         double x,
         double y,

@@ -3,33 +3,33 @@ module model.game;
 /**
  * Предоставляет доступ к различным игровым константам.
  */
-class Game
+immutable class Game
 {
     /**
      * Returns: Возвращает некоторое число, которое ваша стратегия может использовать для инициализации генератора
      * случайных чисел. Данное значение имеет рекомендательный характер, однако позволит более точно воспроизводить
      * прошедшие игры.
      */
-    immutable long randomSeed;
+    long randomSeed;
     /**
      * Returns: Возвращает базовую длительность игры в тиках. Реальная длительность может отличаться от этого значения в
      * меньшую сторону. Эквивалентно `world.tickCount`.
      */
-    immutable int tickCount;
+    int tickCount;
     /**
      * Returns: Возвращает размер (ширину и высоту) карты.
      */
-    immutable double mapSize;
+    double mapSize;
     /**
      * Returns: Возвращает `true`, если и только если в данной игре волшебники могут повышать свой уровень
      * (накапливая опыт) и изучать новые умения.
      */
-    immutable bool skillsEnabled;
+    bool skillsEnabled;
     /**
      * Returns: Возвращает `true`, если и только если верховные волшебники в данной игре могут передавать
      * низкоуровневые сообщения другим волшебникам своей фракции.
      */
-    immutable bool rawMessagesEnabled;
+    bool rawMessagesEnabled;
     /**
      * Returns: Возвращает коэффициент урона, наносимого волшебниками одной фракции друг другу в результате
      * дружественного огня.
@@ -38,52 +38,52 @@ class Game
      * $(BR)
      * Вне зависимости от режима игры, волшебники не могут наносить урон союзным миньонам и структурам.
      */
-    immutable double friendlyFireDamageFactor;
+    double friendlyFireDamageFactor;
     /**
      * Returns: Возвращает коэффициент опыта, получаемого волшебником при нанесении урона строениям противоположной
      * фракции.
      */
-    immutable double buildingDamageScoreFactor;
+    double buildingDamageScoreFactor;
     /**
      * Returns: Возвращает коэффициент опыта, получаемого волшебником за разрушение строения противоположной фракции.
      * $(BR)
      * Применяется к максимальному количеству жизненной энергии строения.
      */
-    immutable double buildingEliminationScoreFactor;
+    double buildingEliminationScoreFactor;
     /**
      * Returns: Возвращает коэффициент опыта, получаемого волшебником при нанесении урона миньонам другой фракции.
      */
-    immutable double minionDamageScoreFactor;
+    double minionDamageScoreFactor;
     /**
      * Returns: Возвращает коэффициент опыта, получаемого волшебником за уничтожение миньона другой фракции.
      * $(BR)
      * Применяется к максимальному количеству жизненной энергии миньона.
      */
-    immutable double minionEliminationScoreFactor;
+    double minionEliminationScoreFactor;
     /**
      * Returns: Возвращает коэффициент опыта, получаемого волшебником при нанесении урона волшебникам противоположной
      * фракции.
      */
-    immutable double wizardDamageScoreFactor;
+    double wizardDamageScoreFactor;
     /**
      * Returns: Возвращает коэффициент опыта, получаемого волшебником за разрушение телесной оболочки волшебника
      * противоположной фракции.
      * $(BR)
      * Применяется к максимальному количеству жизненной энергии волшебника.
      */
-    immutable double wizardEliminationScoreFactor;
+    double wizardEliminationScoreFactor;
     /**
      * Returns: Возвращает мультипликатор опыта, применяемый в случае уничтожения юнита противника при участии двух или
      * более волшебников.
      * $(BR)
      * После применения мультипликатора количество опыта округляется вниз до ближайшего целого значения.
      */
-    immutable double teamWorkingScoreFactor;
+    double teamWorkingScoreFactor;
     /**
      * Returns: Возвращает количество баллов, получаемых всеми игроками фракции в случае победы --- разрушения базы
      * противоположной фракции.
      */
-    immutable int victoryScore;
+    int victoryScore;
     /**
      * Returns: Возвращает максимальное расстояние, на котором волшебник получает опыт при уничтожении союзником юнита
      * другой фракции.
@@ -96,13 +96,13 @@ class Game
      * $(BR)
      * Учитывается расстояние между центрами юнитов.
      */
-    immutable double scoreGainRange;
+    double scoreGainRange;
     /**
      * Returns: Возвращает максимально возможную длину низкоуровневого сообщения.
      * $(BR)
      * Сообщения, длина которых превышает указанное значение, будут проигнорированы.
      */
-    immutable int rawMessageMaxLength;
+    int rawMessageMaxLength;
     /**
      * Returns: Возвращает скорость отправки сообщения.
      * $(BR)
@@ -110,83 +110,83 @@ class Game
      * момент получения сообщения будет отложен на `ceil (message.rawMessage.length / rawMessageTransmissionSpeed)`
      * игровых тиков.
      */
-    immutable double rawMessageTransmissionSpeed;
+    double rawMessageTransmissionSpeed;
     /**
      * Returns: Возвращает радиус волшебника.
      */
-    immutable double wizardRadius;
+    double wizardRadius;
     /**
      * Returns: Возвращает базовую дальность заклинаний волшебника.
      * $(BR)
      * Эффективная дальность (`wizard.castRange`) может быть выше в результате действия некоторых аур и/или
      * изучения волшебником некоторых умений.
      */
-    immutable double wizardCastRange;
+    double wizardCastRange;
     /**
      * Returns: Возвращает максимальное расстояние (от центра до центра), на котором волшебник обнаруживает другие
      * объекты.
      */
-    immutable double wizardVisionRange;
+    double wizardVisionRange;
     /**
      * Returns: Возвращает базовое ограничение скорости волшебника при движении вперёд.
      * $(BR)
      * Эффективное ограничение может быть выше в результате действия некоторых аур и/или изучения волшебником некоторых
      * умений, а также в результате действия статуса `Hastened`.
      */
-    immutable double wizardForwardSpeed;
+    double wizardForwardSpeed;
     /**
      * Returns: Возвращает базовое ограничение скорости волшебника при движении назад.
      * $(BR)
      * Эффективное ограничение может быть выше в результате действия некоторых аур и/или изучения волшебником некоторых
      * умений, а также в результате действия статуса `Hastened`.
      */
-    immutable double wizardBackwardSpeed;
+    double wizardBackwardSpeed;
     /**
      * Returns: Возвращает базовое ограничение скорости волшебника при движении боком.
      * $(BR)
      * Эффективное ограничение может быть выше в результате действия некоторых аур и/или изучения волшебником некоторых
      * умений, а также в результате действия статуса `Hastened`.
      */
-    immutable double wizardStrafeSpeed;
+    double wizardStrafeSpeed;
     /**
      * Returns: Возвращает максимальное значение жизненной энергии волшебника на уровне `0`.
      */
-    immutable int wizardBaseLife;
+    int wizardBaseLife;
     /**
      * Returns: Возвращает прирост жизненной энергии волшебника за уровень.
      */
-    immutable int wizardLifeGrowthPerLevel;
+    int wizardLifeGrowthPerLevel;
     /**
      * Returns: Возвращает максимальное значение магической энергии волшебника на уровне `0`.
      */
-    immutable int wizardBaseMana;
+    int wizardBaseMana;
     /**
      * Returns: Возвращает прирост магической энергии волшебника за уровень.
      */
-    immutable int wizardManaGrowthPerLevel;
+    int wizardManaGrowthPerLevel;
     /**
      * Returns: Возвращает количество жизненной энергии, которое волшебник уровня `0` восстанавливает за один тик.
      */
-    immutable double wizardBaseLifeRegeneration;
+    double wizardBaseLifeRegeneration;
     /**
      * Returns: Возвращает прирост скорости регенерации жизненной энергии волшебника за один уровень.
      */
-    immutable double wizardLifeRegenerationGrowthPerLevel;
+    double wizardLifeRegenerationGrowthPerLevel;
     /**
      * Returns: Возвращает количество магической энергии, которое волшебник уровня `0` восстанавливает за один тик.
      */
-    immutable double wizardBaseManaRegeneration;
+    double wizardBaseManaRegeneration;
     /**
      * Returns: Возвращает прирост скорости регенерации магической энергии волшебника за один уровень.
      */
-    immutable double wizardManaRegenerationGrowthPerLevel;
+    double wizardManaRegenerationGrowthPerLevel;
     /**
      * Returns: Возвращает базовое ограничение на изменение угла поворота волшебника за один тик.
      * $(BR)
      * Эффективное ограничение может быть выше в `1.0 + hastenedRotationBonusFactor` раз в результате действия
      * статуса `Hastened`.
      */
-    immutable double wizardMaxTurnAngle;
+    double wizardMaxTurnAngle;
     /**
      * Returns: Возвращает максимально возможную задержку возрождения волшебника после смерти его телесной оболочки.
      * $(BR)
@@ -195,7 +195,7 @@ class Game
      * игровой тик жизни волшебника уменьшшает эту задержку на единицу. Задержка возрождения не может стать меньше, чем
      * `wizardMinResurrectionDelayTicks`.
      */
-    immutable int wizardMaxResurrectionDelayTicks;
+    int wizardMaxResurrectionDelayTicks;
     /**
      * Returns: Возвращает минимально возможную задержку возрождения волшебника после смерти его телесной оболочки.
      * $(BR)
@@ -204,77 +204,77 @@ class Game
      * игровой тик жизни волшебника уменьшшает эту задержку на единицу. Задержка возрождения не может стать меньше, чем
      * `wizardMinResurrectionDelayTicks`.
      */
-    immutable int wizardMinResurrectionDelayTicks;
+    int wizardMinResurrectionDelayTicks;
     /**
      * Returns: Возвращает минимально возможную задержку между любыми двумя последовательными действиями волшебника.
      */
-    immutable int wizardActionCooldownTicks;
+    int wizardActionCooldownTicks;
     /**
      * Returns: Возвращает минимально возможную задержку между двумя последовательными ударами посохом.
      */
-    immutable int staffCooldownTicks;
+    int staffCooldownTicks;
     /**
      * Returns: Возвращает минимально возможную задержку между двумя последовательными заклинаниями <<Магическая
      * ракета>>.
      */
-    immutable int magicMissileCooldownTicks;
+    int magicMissileCooldownTicks;
     /**
      * Returns: Возвращает минимально возможную задержку между двумя последовательными заклинаниями <<Ледяная стрела>>.
      */
-    immutable int frostBoltCooldownTicks;
+    int frostBoltCooldownTicks;
     /**
      * Returns: Возвращает минимально возможную задержку между двумя последовательными заклинаниями <<Огненный шар>>.
      */
-    immutable int fireballCooldownTicks;
+    int fireballCooldownTicks;
     /**
      * Returns: Возвращает минимально возможную задержку между двумя последовательными заклинаниями <<Ускорение>>.
      */
-    immutable int hasteCooldownTicks;
+    int hasteCooldownTicks;
     /**
      * Returns: Возвращает минимально возможную задержку между двумя последовательными заклинаниями <<Щит>>.
      */
-    immutable int shieldCooldownTicks;
+    int shieldCooldownTicks;
     /**
      * Returns: Возвращает количество магической энергии, требуемой для заклинания <<Магическая ракета>>.
      */
-    immutable int magicMissileManacost;
+    int magicMissileManacost;
     /**
      * Returns: Возвращает количество магической энергии, требуемой для заклинания <<Ледяная стрела>>.
      */
-    immutable int frostBoltManacost;
+    int frostBoltManacost;
     /**
      * Returns: Возвращает количество магической энергии, требуемой для заклинания <<Огненный шар>>.
      */
-    immutable int fireballManacost;
+    int fireballManacost;
     /**
      * Returns: Возвращает количество магической энергии, требуемой для заклинания <<Ускорение>>.
      */
-    immutable int hasteManacost;
+    int hasteManacost;
     /**
      * Returns: Возвращает количество магической энергии, требуемой для заклинания <<Щит>>.
      */
-    immutable int shieldManacost;
+    int shieldManacost;
     /**
      * Returns: Возвращает базовый урон удара посохом.
      * $(BR)
      * Эффективный урон может быть выше в результате действия некоторых аур и/или изучения волшебником некоторых
      * умений.
      */
-    immutable int staffDamage;
+    int staffDamage;
     /**
      * Returns: Возвращает сектор действия посоха волшебника.
      * $(BR)
      * Атака посохом поражает все живые объекты в секторе от `-staffSector / 2.0` до `staffSector / 2.0`.
      * Этим же интервалом ограничены относительный угол снаряда, а также зона применения магического статуса.
      */
-    immutable double staffSector;
+    double staffSector;
     /**
      * Returns: Возвращает дальность действия посоха волшебника.
      * $(BR)
      * Атака посохом поражает все живые объекты, для каждого из которых верно, что расстояние от его центра до центра
      * волшебника не превышает значение `staffRange + livingUnit.radius`.
      */
-    immutable double staffRange;
+    double staffRange;
     /**
      * Returns: Возвращает последовательность неотрицательных целых чисел.
      * $(BR)
@@ -283,30 +283,30 @@ class Game
      * получения следующего уровня. Таким образом, количество опыта, необходимое волшебнику начального уровня для
      * получения уровня `N`, равно сумме первых `N` элементов.
      */
-    immutable int [] levelUpXpValues;
+    int [] levelUpXpValues;
     /**
      * Returns: Возвращает радиус миньона.
      */
-    immutable double minionRadius;
+    double minionRadius;
     /**
      * Returns: Возвращает максимальное расстояние (от центра до центра), на котором миньон обнаруживает другие
      * объекты.
      */
-    immutable double minionVisionRange;
+    double minionVisionRange;
     /**
      * Returns: Возвращает скорость миньона при движении вперёд.
      * $(BR)
      * Миньонам недоступно использование других видов движения, а также перемещение со скоростью, отличной от указанной.
      */
-    immutable double minionSpeed;
+    double minionSpeed;
     /**
      * Returns: Возвращает ограничение на изменение угла поворота миньона за один тик.
      */
-    immutable double minionMaxTurnAngle;
+    double minionMaxTurnAngle;
     /**
      * Returns: Возвращает максимальное значение жизненной энергии миньона.
      */
-    immutable int minionLife;
+    int minionLife;
     /**
      * Returns: Возвращает интервал, с которым появляются миньоны двух противостоящих фракций (`Academy` и
      * `Renegades`).
@@ -315,48 +315,48 @@ class Game
      * состоит и трёх орков и одного фетиша. Сразу после появления миньоны начинают продвижение по своей дорожке в
      * сторону базы противоположной фракции, при этом атакуя всех противников на своём пути.
      */
-    immutable int factionMinionAppearanceIntervalTicks;
+    int factionMinionAppearanceIntervalTicks;
     /**
      * Returns: Возвращает минимально возможную задержку между двумя последовательными атаками орка-дровосека.
      */
-    immutable int orcWoodcutterActionCooldownTicks;
+    int orcWoodcutterActionCooldownTicks;
     /**
      * Returns: Возвращает урон одной атаки орка-дровосека.
      */
-    immutable int orcWoodcutterDamage;
+    int orcWoodcutterDamage;
     /**
      * Returns: Возвращает сектор действия топора орка.
      * $(BR)
      * Атака топором поражает все живые объекты в секторе от `-orcWoodcutterAttackSector / 2.0` до
      * `orcWoodcutterAttackSector / 2.0`.
      */
-    immutable double orcWoodcutterAttackSector;
+    double orcWoodcutterAttackSector;
     /**
      * Returns: Возвращает дальность действия топора орка.
      * $(BR)
      * Атака топором поражает все живые объекты, для каждого из которых верно, что расстояние от его центра до центра
      * орка-дровосека не превышает значение `orcWoodcutterAttackRange + livingUnit.radius`.
      */
-    immutable double orcWoodcutterAttackRange;
+    double orcWoodcutterAttackRange;
     /**
      * Returns: Возвращает минимально возможную задержку между двумя последовательными атаками фетиша.
      */
-    immutable int fetishBlowdartActionCooldownTicks;
+    int fetishBlowdartActionCooldownTicks;
     /**
      * Returns: Возвращает дальность полёта дротика, выпущенного фетишем.
      */
-    immutable double fetishBlowdartAttackRange;
+    double fetishBlowdartAttackRange;
     /**
      * Returns: Возвращает сектор метания дротика фетишем.
      * $(BR)
      * Угол полёта дротика относительно направления фетиша ограничен интервалом от
      * `-fetishBlowdartAttackSector / 2.0` до `fetishBlowdartAttackSector / 2.0`.
      */
-    immutable double fetishBlowdartAttackSector;
+    double fetishBlowdartAttackSector;
     /**
      * Returns: Возвращает радиус бонуса.
      */
-    immutable double bonusRadius;
+    double bonusRadius;
     /**
      * Returns: Возвращает интервал появления бонусов.
      * $(BR)
@@ -365,67 +365,67 @@ class Game
      * области появления бонуса уже занята волшебником или другим бонусом, то создание бонуса будет отложено до
      * окончания очередного интервала.
      */
-    immutable int bonusAppearanceIntervalTicks;
+    int bonusAppearanceIntervalTicks;
     /**
      * Returns: Возвращает количество баллов, начисляемых игроку, волшебник которого подробрал бонус.
      * $(BR)
      * Сам волшебник получает такое же количество опыта.
      */
-    immutable int bonusScoreAmount;
+    int bonusScoreAmount;
     /**
      * Returns: Возвращает радиус дротика.
      */
-    immutable double dartRadius;
+    double dartRadius;
     /**
      * Returns: Возвращает скорость полёта дротика.
      */
-    immutable double dartSpeed;
+    double dartSpeed;
     /**
      * Returns: Возвращает урон дротика.
      */
-    immutable int dartDirectDamage;
+    int dartDirectDamage;
     /**
      * Returns: Возвращает радиус <<Магической ракеты>>.
      */
-    immutable double magicMissileRadius;
+    double magicMissileRadius;
     /**
      * Returns: Возвращает скорость полёта <<Магической ракеты>>.
      */
-    immutable double magicMissileSpeed;
+    double magicMissileSpeed;
     /**
      * Returns: Возвращает урон <<Магической ракеты>>.
      */
-    immutable int magicMissileDirectDamage;
+    int magicMissileDirectDamage;
     /**
      * Returns: Возвращает радиус <<Ледяной стрелы>>.
      */
-    immutable double frostBoltRadius;
+    double frostBoltRadius;
     /**
      * Returns: Возвращает скорость полёта <<Ледяной стрелы>>.
      */
-    immutable double frostBoltSpeed;
+    double frostBoltSpeed;
     /**
      * Returns: Возвращает урон <<Ледяной стрелы>>.
      */
-    immutable int frostBoltDirectDamage;
+    int frostBoltDirectDamage;
     /**
      * Returns: Возвращает радиус <<Огненного шара>>.
      */
-    immutable double fireballRadius;
+    double fireballRadius;
     /**
      * Returns: Возвращает скорость полёта <<Огненного шара>>.
      */
-    immutable double fireballSpeed;
+    double fireballSpeed;
     /**
      * Returns: Возвращает радиус области, в которой живые юниты получают максимальный урон от взрыва <<Огненного шара>>.
      * See_Also: #getFireballExplosionMaxDamage ()
      */
-    immutable double fireballExplosionMaxDamageRange;
+    double fireballExplosionMaxDamageRange;
     /**
      * Returns: Возвращает радиус области, в которой живые юниты получают какой-либо урон от взрыва <<Огненного шара>>.
      * See_Also: #getFireballExplosionMaxDamage ()
      */
-    immutable double fireballExplosionMinDamageRange;
+    double fireballExplosionMinDamageRange;
     /**
      * Returns: Возвращает урон <<Огненного шара>> в эпицентре взрыва.
      * $(BR)
@@ -437,95 +437,95 @@ class Game
      * $(BR)
      * Если живой юнит получил какой-либо урон от взрыва <<Огненного шара>>, то он загорается (`Burning`).
      */
-    immutable int fireballExplosionMaxDamage;
+    int fireballExplosionMaxDamage;
     /**
      * Returns: Возвращает урон <<Огненного шара>> на периферии взрыва.
      * See_Also: #getFireballExplosionMaxDamage ()
      */
-    immutable int fireballExplosionMinDamage;
+    int fireballExplosionMinDamage;
     /**
      * Returns: Возвращает радиус охранной башни.
      */
-    immutable double guardianTowerRadius;
+    double guardianTowerRadius;
     /**
      * Returns: Возвращает максимальное расстояние (от центра до центра), на котором охранная башня обнаруживает другие
      * объекты.
      */
-    immutable double guardianTowerVisionRange;
+    double guardianTowerVisionRange;
     /**
      * Returns: Возвращает начальное значение жизненной энергии охранной башни.
      */
-    immutable double guardianTowerLife;
+    double guardianTowerLife;
     /**
      * Returns: Возвращает максимальное расстояние (от центра до центра), на котором охранная башня может атаковать
      * другие объекты.
      */
-    immutable double guardianTowerAttackRange;
+    double guardianTowerAttackRange;
     /**
      * Returns: Возвращает урон одной атаки охранной башни.
      */
-    immutable int guardianTowerDamage;
+    int guardianTowerDamage;
     /**
      * Returns: Возвращает минимально возможную задержку между двумя последовательными атаками охранной башни.
      */
-    immutable int guardianTowerCooldownTicks;
+    int guardianTowerCooldownTicks;
     /**
      * Returns: Возвращает радиус базы фракции.
      */
-    immutable double factionBaseRadius;
+    double factionBaseRadius;
     /**
      * Returns: Возвращает максимальное расстояние (от центра до центра), на котором база фракции обнаруживает другие
      * объекты.
      */
-    immutable double factionBaseVisionRange;
+    double factionBaseVisionRange;
     /**
      * Returns: Возвращает начальное значение жизненной энергии базы фракции.
      */
-    immutable double factionBaseLife;
+    double factionBaseLife;
     /**
      * Returns: Возвращает максимальное расстояние (от центра до центра), на котором база фракции может атаковать
      * другие объекты.
      */
-    immutable double factionBaseAttackRange;
+    double factionBaseAttackRange;
     /**
      * Returns: Возвращает урон одной атаки базы фракции.
      */
-    immutable int factionBaseDamage;
+    int factionBaseDamage;
     /**
      * Returns: Возвращает минимально возможную задержку между двумя последовательными атаками базы фракции.
      */
-    immutable int factionBaseCooldownTicks;
+    int factionBaseCooldownTicks;
     /**
      * Returns: Возвращает длительность действия статуса `Burning`.
      */
-    immutable int burningDurationTicks;
+    int burningDurationTicks;
     /**
      * Returns: Возвращает суммарный урон, получаемый живым юнитом за время действия статуса `Burning`.
      */
-    immutable int burningSummaryDamage;
+    int burningSummaryDamage;
     /**
      * Returns: Возвращает длительность действия статуса `Empowered`.
      */
-    immutable int empoweredDurationTicks;
+    int empoweredDurationTicks;
     /**
      * Returns: Возвращает мультипликатор урона, наносимого живым юнитом под действием статуса `Empowered`.
      * $(BR)
      * Мультипликатор применяется к ударам в ближнем бою, прямым попаданиям снарядов, а также взрыву <<Огненного шара>>,
      * но не применяется к урону, получаемому от статусов.
      */
-    immutable double empoweredDamageFactor;
+    double empoweredDamageFactor;
     /**
      * Returns: Возвращает длительность действия статуса `Frozen`.
      */
-    immutable int frozenDurationTicks;
+    int frozenDurationTicks;
     /**
      * Returns: Возвращает длительность действия статуса `Hastened`.
      */
-    immutable int hastenedDurationTicks;
+    int hastenedDurationTicks;
     /**
      * Returns: Возвращает мультилпикатор длительности действия статуса `Hastened` в случае подбора бонуса.
      */
-    immutable double hastenedBonusDurationFactor;
+    double hastenedBonusDurationFactor;
     /**
      * Returns: Возвращает относительное увеличение скорости перемещения в результате дествия статуса `Hastened`.
      * $(BR)
@@ -534,46 +534,46 @@ class Game
      * скорости волшебника составляет
      * `1.0 + 4.0 * movementBonusFactorPerSkillLevel + hastenedMovementBonusFactor` от базовой.
      */
-    immutable double hastenedMovementBonusFactor;
+    double hastenedMovementBonusFactor;
     /**
      * Returns: Возвращает относительное увеличение скорости поворота в результате дествия статуса `Hastened`.
      */
-    immutable double hastenedRotationBonusFactor;
+    double hastenedRotationBonusFactor;
     /**
      * Returns: Возвращает длительность действия статуса `Shielded`.
      */
-    immutable int shieldedDurationTicks;
+    int shieldedDurationTicks;
     /**
      * Returns: Возвращает мультилпикатор длительности действия статуса `Shielded` в случае подбора бонуса.
      */
-    immutable double shieldedBonusDurationFactor;
+    double shieldedBonusDurationFactor;
     /**
      * Returns: Возвращает часть урона, поглощаемую щитом.
      * $(BR)
      * Снижение урона применяется к ударам в ближнем бою, прямым попаданиям снарядов, а также взрыву <<Огненного шара>>,
      * но не применяется к урону, получаемому от статусов.
      */
-    immutable double shieldedDirectDamageAbsorptionFactor;
+    double shieldedDirectDamageAbsorptionFactor;
     /**
      * Returns: Возвращает дальность действия аур.
      */
-    immutable double auraSkillRange;
+    double auraSkillRange;
     /**
      * Returns: Возвращает абсолютное увеличение дальности заклинаний волшебника за каждое последовательное изучение
      * умения, являющегося одним из пререквизитов умения `AdvancedMagicMissile`.
      */
-    immutable double rangeBonusPerSkillLevel;
+    double rangeBonusPerSkillLevel;
     /**
      * Returns: Возвращает абсолютное увеличение урона, наносимого волшебником в результате прямых попаданий магических
      * снарядов и взрыва <<Огненного шара>>, за каждое последовательное изучение умения, являющегося одним из
      * пререквизитов умения `FrostBolt`.
      */
-    immutable int magicalDamageBonusPerSkillLevel;
+    int magicalDamageBonusPerSkillLevel;
     /**
      * Returns: Возвращает абсолютное увеличение урона, наносимого волшебником в ближнем бою, за каждое последовательное
      * изучение умения, являющегося одним из пререквизитов умения `Fireball`.
      */
-    immutable int staffDamageBonusPerSkillLevel;
+    int staffDamageBonusPerSkillLevel;
     /**
      * Returns: Возвращает относительное увеличение скорости перемещения за каждое последовательное изучение умения,
      * являющегося одним из пререквизитов умения `Haste`.
@@ -583,15 +583,15 @@ class Game
      * скорости волшебника составляет
      * `1.0 + 4.0 * movementBonusFactorPerSkillLevel + hastenedMovementBonusFactor` от базовой.
      */
-    immutable double movementBonusFactorPerSkillLevel;
+    double movementBonusFactorPerSkillLevel;
     /**
      * Returns: Возвращает абсолютное уменьшение урона, получаемого волшебником в результате прямых попаданий магических
      * снарядов, взрыва <<Огненного шара>> и атак строений, за каждое последовательное изучение умения, являющегося
      * одним из пререквизитов умения `Shield`.
      */
-    immutable int magicalDamageAbsorptionPerSkillLevel;
+    int magicalDamageAbsorptionPerSkillLevel;
 
-    immutable this (
+    this (
         long randomSeed,
         int tickCount,
         double mapSize,
@@ -641,7 +641,7 @@ class Game
         int staffDamage,
         double staffSector,
         double staffRange,
-        int [] levelUpXpValues,
+        immutable (int) [] levelUpXpValues,
         double minionRadius,
         double minionVisionRange,
         double minionSpeed,
@@ -753,7 +753,7 @@ class Game
         this.staffDamage = staffDamage;
         this.staffSector = staffSector;
         this.staffRange = staffRange;
-        this.levelUpXpValues = levelUpXpValues.idup;
+        this.levelUpXpValues = levelUpXpValues;
         this.minionRadius = minionRadius;
         this.minionVisionRange = minionVisionRange;
         this.minionSpeed = minionSpeed;

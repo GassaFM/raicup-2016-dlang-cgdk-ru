@@ -5,30 +5,30 @@ import model.status_type;
 /**
  * Магический статус, влияющий на живого юнита.
  */
-class Status
+immutable class Status
 {
     /**
      * Returns: Возвращает уникальный идентификатор статуса.
      */
-    immutable long id;
+    long id;
     /**
      * Returns: Возвращает тип магического статуса.
      */
-    immutable StatusType type;
+    StatusType type;
     /**
      * Returns: Возвращает идентификатор волшебника, наложившего данный статус, или `-1`.
      */
-    immutable long wizardId;
+    long wizardId;
     /**
      * Returns: Возвращает идентификатор игрока, волшебник которого наложил данный статус, или `-1`.
      */
-    immutable long playerId;
+    long playerId;
     /**
      * Returns: Возвращает оставшуюся длительность действия статуса.
      */
-    immutable int remainingDurationTicks;
+    int remainingDurationTicks;
 
-    immutable this (
+    this (
         long id,
         immutable (StatusType) type,
         long wizardId,

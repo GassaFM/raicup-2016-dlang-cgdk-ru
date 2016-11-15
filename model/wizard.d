@@ -9,29 +9,29 @@ import model.message;
 /**
  * Класс, определяющий волшебника. Содержит также все свойства живого юнита.
  */
-class Wizard : LivingUnit
+immutable class Wizard : LivingUnit
 {
     /**
      * Returns: Возвращает идентификатор игрока, которому принадлежит волшебник.
      */
-    immutable long ownerPlayerId;
+    long ownerPlayerId;
     /**
      * Returns: Возвращает `true` в том и только том случае, если этот волшебник ваш.
      */
-    immutable bool me;
+    bool me;
     /**
      * Returns: Возвращает текущее количество магической энергии волшебника.
      */
-    immutable int mana;
+    int mana;
     /**
      * Returns: Возвращает максимальное количество магической энергии волшебника.
      */
-    immutable int maxMana;
+    int maxMana;
     /**
      * Returns: Возвращает максимальное расстояние (от центра до центра),
      * на котором данный волшебник обнаруживает другие объекты.
      */
-    immutable double visionRange;
+    double visionRange;
     /**
      * Returns: Возвращает максимальное расстояние (от центра волшебника),
      * которое может преодолеть выпущенный им магический снаряд.
@@ -39,11 +39,11 @@ class Wizard : LivingUnit
      * Также является максимально возможной дальностью применения заклинаний, накладывающих на цель магический статус
      * (`Haste` и `Shield`).
      */
-    immutable double castRange;
+    double castRange;
     /**
      * Returns: Возвращает количество очков опыта, полученное волшебником в процессе игры.
      */
-    immutable int xp;
+    int xp;
     /**
      * Returns: Возвращает текущий уровень волшебника.
      * $(BR)
@@ -51,11 +51,11 @@ class Wizard : LivingUnit
      * $(BR)
      * В некоторых режимах игры рост уровня волшебника может быть заблокирован.
      */
-    immutable int level;
+    int level;
     /**
      * Returns: Возвращает умения, изученные волшебником.
      */
-    immutable SkillType [] skills;
+    SkillType [] skills;
     /**
      * Returns: Возвращает количество тиков, оставшееся до любого следующего действия.
      * $(BR)
@@ -63,7 +63,7 @@ class Wizard : LivingUnit
      * `remainingActionCooldownTicks` и `remainingCooldownTicksByAction[actionType.ordinal ()]` были равны
      * нулю.
      */
-    immutable int remainingActionCooldownTicks;
+    int remainingActionCooldownTicks;
     /**
      * Returns: Возвращает массив целых неотрицательных чисел. Каждая ячейка массива содержит значение количества тиков,
      * оставшегося до совершения следующего действия с соответствующим индексом.
@@ -77,21 +77,21 @@ class Wizard : LivingUnit
      * `remainingActionCooldownTicks` и `remainingCooldownTicksByAction[actionType.ordinal ()]` были равны
      * нулю.
      */
-    immutable int [] remainingCooldownTicksByAction;
+    int [] remainingCooldownTicksByAction;
     /**
      * Returns: Возвращает `true` в том и только том случае, если этот волшебник является верховным.
      * $(BR)
      * Количество верховных волшебников в каждой фракции строго равно одному.
      */
-    immutable bool master;
+    bool master;
     /**
      * Returns: Возвращает сообщения, предназначенные данному волшебнику, если есть право на их просмотр.
      * $(BR)
      * Стратегия может просматривать только сообщения, адресатом которых является управляемый ею волшебник.
      */
-    immutable Message [] messages;
+    Message [] messages;
 
-    immutable this (
+    this (
         long id,
         double x,
         double y,
@@ -113,7 +113,7 @@ class Wizard : LivingUnit
         int level,
         immutable (SkillType) [] skills,
         int remainingActionCooldownTicks,
-        int [] remainingCooldownTicksByAction,
+        immutable (int) [] remainingCooldownTicksByAction,
         bool master,
         immutable (Message) [] messages)
     {
@@ -127,10 +127,10 @@ class Wizard : LivingUnit
         this.castRange = castRange;
         this.xp = xp;
         this.level = level;
-        this.skills = skills.idup;
+        this.skills = skills;
         this.remainingActionCooldownTicks = remainingActionCooldownTicks;
-        this.remainingCooldownTicksByAction = remainingCooldownTicksByAction.idup;
+        this.remainingCooldownTicksByAction = remainingCooldownTicksByAction;
         this.master = master;
-        this.messages = messages.idup;
+        this.messages = messages;
     }
 }

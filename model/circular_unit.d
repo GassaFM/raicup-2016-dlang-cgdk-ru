@@ -6,14 +6,14 @@ import model.faction;
 /**
  * Базовый класс для определения круглых объектов. Содержит также все свойства юнита.
  */
-abstract class CircularUnit : Unit
+abstract immutable class CircularUnit : Unit
 {
     /**
      * Returns: Возвращает радиус объекта.
      */
-    immutable double radius;
+    double radius;
 
-    protected immutable this (
+    protected this (
         long id,
         double x,
         double y,
