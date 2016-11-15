@@ -770,6 +770,7 @@ void main ()
 		    .replace ("../java/model/", "")
 		    .replace (".java", "");
 	}
+	sort (topNames);
 
 	foreach (name; dir)
 	{
@@ -781,7 +782,6 @@ void main ()
 	auto output = File ("../model/package.d", "wt");
 	output.writeln ("module model;");
 	output.writeln;
-	sort (topNames);
 	foreach (name; topNames)
 	{
 		output.writeln ("public import model.", name.toSnakeCase, ";");
