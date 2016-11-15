@@ -7,6 +7,8 @@ import model.faction;
  */
 immutable class Player
 {
+nothrow pure @safe @nogc:
+
     /**
      * Returns: Возвращает уникальный идентификатор игрока.
      */

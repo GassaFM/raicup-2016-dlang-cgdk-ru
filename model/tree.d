@@ -9,6 +9,8 @@ import model.status;
  */
 immutable class Tree : LivingUnit
 {
+nothrow pure @safe @nogc:
+
 
     this (
         long id,

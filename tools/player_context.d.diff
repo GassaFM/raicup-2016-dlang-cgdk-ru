@@ -1,4 +1,4 @@
-15c15
+17c17
 <         this.wizards = wizards == null ? null : wizards;
 ---
 >         this.wizards = wizards;

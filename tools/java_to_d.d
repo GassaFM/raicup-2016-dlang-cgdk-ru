@@ -105,7 +105,7 @@ string [] words (string line)
 {
 	string [] res;
 	int wordStart = int.min;
-	foreach (i, c; line ~ " ")
+	foreach (int i, c; line ~ " ")
 	{
 		if (!c.isAlphaNum && c != '_')
 		{
@@ -132,7 +132,7 @@ string [] tokens (string line)
 	enum State {White, Id, Op}
 	State cur = State.White;
 	int pos = 0;
-	foreach (i, c; line ~ " ")
+	foreach (int i, c; line ~ " ")
 	{
 		State next = (c.isAlphaNum || c == '_') ? State.Id :
 		    c.isWhite ? State.White : State.Op;
@@ -416,7 +416,7 @@ class Class
 		int balance = 0;
 		int balance2 = 0;
 		int start = int.min;
-		foreach (i, line; lines)
+		foreach (int i, line; lines)
 		{
 			if (line.empty || line.isCommentLine)
 			{
@@ -543,6 +543,8 @@ class Class
 		res ~= headComment;
 		res ~= headLine;
 		res ~= "{";
+		res ~= "nothrow pure @safe @nogc:";
+		res ~= "";
 		foreach (curField; fields)
 		{
 			res ~= curField.write ();
@@ -621,7 +623,7 @@ string [] process (string [] inputLines, string curName, string curModuleName)
 	Class curClass;
 	int balance = 0;
 	int start = int.min;
-	foreach (i, line; inputLines)
+	foreach (int i, line; inputLines)
 	{
 		if (line.empty || line.isCommentLine)
 		{
@@ -768,6 +770,7 @@ void main ()
 		    .replace ("../java/model/", "")
 		    .replace (".java", "");
 	}
+	sort (topNames);
 
 	foreach (name; dir)
 	{
@@ -775,7 +778,7 @@ void main ()
 		stdout.flush ();
 		translateFile (name);
 	}
-	
+
 	auto output = File ("../model/package.d", "wt");
 	output.writeln ("module model;");
 	output.writeln;

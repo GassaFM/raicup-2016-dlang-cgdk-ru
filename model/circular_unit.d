@@ -8,6 +8,8 @@ import model.faction;
  */
 abstract immutable class CircularUnit : Unit
 {
+nothrow pure @safe @nogc:
+
     /**
      * Returns: Возвращает радиус объекта.
      */

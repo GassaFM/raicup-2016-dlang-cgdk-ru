@@ -12,6 +12,8 @@ import model.building_type;
  */
 immutable class Building : LivingUnit
 {
+nothrow pure @safe @nogc:
+
     /**
      * Returns: Возвращает тип строения.
      */

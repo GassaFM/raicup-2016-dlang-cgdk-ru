@@ -9,6 +9,8 @@ import model.faction;
  */
 immutable class Bonus : CircularUnit
 {
+nothrow pure @safe @nogc:
+
     /**
      * Returns: Возвращает тип бонуса.
      */

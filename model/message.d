@@ -16,6 +16,8 @@ import model.lane_type;
  */
 immutable class Message
 {
+nothrow pure @safe @nogc:
+
     /**
      * Returns: Возвращает указание контролировать определённую дорожку.
      */

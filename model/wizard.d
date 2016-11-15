@@ -11,6 +11,8 @@ import model.message;
  */
 immutable class Wizard : LivingUnit
 {
+nothrow pure @safe @nogc:
+
     /**
      * Returns: Возвращает идентификатор игрока, которому принадлежит волшебник.
      */
