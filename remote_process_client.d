@@ -283,7 +283,7 @@ private:
         size_t offset = 0;
         while (offset < bytes.length)
         {
-            auto sent = socket.send (bytes);
+            auto sent = socket.send (bytes[offset..bytes.length]);
             enforce (sent > 0);
             offset += sent;
         }
