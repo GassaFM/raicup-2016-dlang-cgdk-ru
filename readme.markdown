@@ -10,6 +10,6 @@ Previous work:
 
 * 2015 D CGDK by Ivan Kazmenko (https://github.com/GassaFM/raicup-dlang-cgdk-2015)
 
-Author: Ivan Kazmenko
+Authors: Ivan Kazmenko, Nickolay Bukreyev
 
 Contact Information: gassa@mail.ru or vk.com/gassa
