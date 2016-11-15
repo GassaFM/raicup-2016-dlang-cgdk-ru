@@ -12,8 +12,8 @@ mkdir -p ../docs
 
 pushd ../model
 for f in move player_context world ; do
-	patch $f.d ../tools/$f.d.diff
-	unix2dos $f.d
+	# preserve line endings (http://stackoverflow.com/a/10934047)
+	patch --binary $f.d ../tools/$f.d.diff
 done
 popd
 
