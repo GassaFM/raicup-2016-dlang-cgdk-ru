@@ -278,12 +278,12 @@ private:
         return bytes;
     }
 
-    void writeBytes (const (ubyte) [] bytes)
+    void writeBytes (const ubyte [] bytes)
     {
         size_t offset = 0;
         while (offset < bytes.length)
         {
-            auto sent = socket.send (bytes[offset..$]);
+            auto sent = socket.send (bytes[offset..bytes.length]);
             enforce (sent > 0);
             offset += sent;
         }
