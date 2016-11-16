@@ -1,3 +1,5 @@
+@echo off
+
 set name=MyStrategy
 
 if not exist my_strategy.d (

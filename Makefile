@@ -1,9 +1,10 @@
 # Change the next line to your local runner's working directory
-LOCAL_RUNNER_HOME = /some/path/local-runner-ru
-DC = dmd
-DFLAGS = -O -release -inline -boundscheck=off -wi
-DDEBUGFLAGS = -g -debug -debug=io -unittest -wi
-LOCAL_RUNNER = ./local-runner.sh
+# or pass it via an environmental variable
+LOCAL_RUNNER_HOME ?= /some/path/local-runner-ru
+DC ?= dmd
+DFLAGS ?= -O -release -inline -boundscheck=off -wi
+DDEBUGFLAGS ?= -g -debug -debug=io -unittest -wi
+LOCAL_RUNNER ?= ./local-runner.sh
 
 SRC=$(wildcard *.d) $(wildcard model/*.d)
 
