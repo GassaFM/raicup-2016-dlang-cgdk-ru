@@ -1,5 +1,5 @@
 # Change the next line to your local runner's working directory
-# or pass it via an environmental variable
+# or pass it via an environment variable
 LOCAL_RUNNER_HOME ?= /some/path/local-runner-ru
 DC ?= dmd
 DFLAGS ?= -O -release -inline -boundscheck=off -wi
