@@ -1,4 +1,4 @@
-@echo off
+rem @echo off
 
 set name=MyStrategy
 
@@ -29,4 +29,4 @@ for %%i in (model\*.d) do (
     set FILES=!FILES! %%i
 )
 
-call "%COMPILER_PATH:"=%dmd" -O -release -inline -boundscheck=off -L/STACK:268435456 -wi!FILES! -of%name% 2>compilation.log
+call "%COMPILER_PATH:"=%dmd" -O -release -inline -boundscheck=off -L/STACK:268435456 -wi !FILES! -of%name% 2>compilation.log
