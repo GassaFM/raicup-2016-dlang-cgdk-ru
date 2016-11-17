@@ -1,8 +1,9 @@
-MyStrategy
-MyStrategy.exe
-java
+/java/
+/.dub/
+/dub.selections.json
+/MyStrategy
+/result.txt
 *.exe
 *.obj
 *.o
 *.log
-result.txt
