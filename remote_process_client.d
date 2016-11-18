@@ -8,6 +8,7 @@ import std.socket;
 import std.stdio;
 import std.string;
 import std.traits;
+import std.typecons;
 
 import model;
 
@@ -77,23 +78,6 @@ enum MessageType : byte
     moveMessage,
 }
 
-class Cache (T)
-{
-	T contents;
-
-	this (T contents_)
-	{
-		contents = contents_;
-	}
-
-	alias contents this;
-}
-
-auto cacheImmutable (T) (T contents_)
-{
-	return new Cache !(immutable T) (contents_);
-}
-
 class RemoteProcessClient
 {
 public:
@@ -161,9 +145,9 @@ public:
 private:
     Socket socket;
 
-    Cache !(immutable Building []) buildingsCache;
-    Cache !(immutable Player []) playersCache;
-    Cache !(immutable Tree []) treesCache;
+    Rebindable !(immutable Building []) buildingsCache;
+    Rebindable !(immutable Player []) playersCache;
+    Rebindable !(immutable Tree []) treesCache;
 
     auto read (T) ()
         if (is (T == class))
@@ -179,15 +163,15 @@ private:
         { // custom read: World has caching for some members
             if (buildings !is null)
             {
-                buildingsCache = cacheImmutable (buildings);
+                buildingsCache = rebindable (buildings);
             }
             if (players !is null)
             {
-                playersCache = cacheImmutable (players);
+                playersCache = rebindable (players);
             }
             if (trees !is null)
             {
-                treesCache = cacheImmutable (trees);
+                treesCache = rebindable (trees);
             }
 
 /*
