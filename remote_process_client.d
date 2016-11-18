@@ -60,7 +60,7 @@ template CallConstructor (T)
     {
         alias member = I !(__traits (getMember, T, "__ctor"));
         alias names = ParameterIdentifierTuple !(member);
-        return "return new immutable T (" ~ [names].join (", ") ~ ");\n";
+        return "new immutable T (" ~ [names].join (", ") ~ ")";
     }
 
     immutable string CallConstructor = Impl ();
@@ -107,7 +107,7 @@ public:
     void writeProtocolVersion ()
     {
         write (MessageType.protocolVersion);
-        write !(int) (2);
+        write !(int) (3);
     }
 
     auto readGameContextMessage ()
@@ -145,50 +145,98 @@ public:
 private:
     Socket socket;
 
-    Rebindable !(immutable Building []) buildingsCache;
-    Rebindable !(immutable Player []) playersCache;
-    Rebindable !(immutable Tree []) treesCache;
+    Rebindable !(immutable Building []) buildingsArrayCache;
+    Rebindable !(immutable Player []) playersArrayCache;
+    Rebindable !(immutable Tree []) treesArrayCache;
+
+    Rebindable !(immutable Player) [long] playerCache;
+    Rebindable !(immutable Unit) [long] unitCache;
+
+    enum ReadMode : byte {empty = 0, normal = 1, useCache = 100};
 
     auto read (T) ()
         if (is (T == class))
     {
         debug (io) {writeln (">read " ~ T.stringof);}
         debug (io) {scope (success) {writeln ("<read " ~ T.stringof);}}
-        enforce (read !(bool));
 
-//        pragma (msg, ReadContents !(T));
-        mixin (ReadContents !(T));
+        auto readMode = read !(ReadMode) ();
+        if (readMode == ReadMode.empty)
+        {
+            return null;
+        }
 
         static if (is (Unqual !(T) == World))
-        { // custom read: World has caching for some members
+        { // custom read: World has caching for some member arrays
+            mixin (ReadContents !(T));
+
             if (buildings !is null)
             {
-                buildingsCache = rebindable (buildings);
+                buildingsArrayCache = rebindable (buildings);
             }
             if (players !is null)
             {
-                playersCache = rebindable (players);
+                playersArrayCache = rebindable (players);
             }
             if (trees !is null)
             {
-                treesCache = rebindable (trees);
+                treesArrayCache = rebindable (trees);
             }
 
-/*
-            pragma (msg, CallConstructor !(T)
-                .replace ("buildings", "buildingsCache")
-                .replace ("players", "playersCache")
-                .replace ("trees", "treesCache"));
-*/
-            mixin (CallConstructor !(T)
-                .replace ("buildings", "buildingsCache")
-                .replace ("players", "playersCache")
-                .replace ("trees", "treesCache"));
+            return mixin (CallConstructor !(T)
+                .replace ("buildings", "buildingsArrayCache")
+                .replace ("players", "playersArrayCache")
+                .replace ("trees", "treesArrayCache"));
+        }
+        else static if (is (Unqual !(T) == Player))
+        { // custom read: Player may be cached
+            long curId;
+            if (readMode == ReadMode.normal)
+            {
+                mixin (ReadContents !(T));
+
+                auto temp = mixin (CallConstructor !(T));
+                curId = temp.id;
+                playerCache[curId] = temp;
+            }
+            else if (readMode == ReadMode.useCache)
+            {
+                curId = read !(long) ();
+            }
+            else
+            {
+                assert (false);
+            }
+            return cast (immutable Player) playerCache[curId];
+        }
+        else static if (
+            is (Unqual !(T) == Building) ||
+            is (Unqual !(T) == Minion) ||
+            is (Unqual !(T) == Tree))
+        { // custom read: Building, Minion, and Tree may be cached
+            long curId;
+            if (readMode == ReadMode.normal)
+            {
+                mixin (ReadContents !(T));
+
+                auto temp = mixin (CallConstructor !(T));
+                curId = temp.id;
+                unitCache[curId] = temp;
+            }
+            else if (readMode == ReadMode.useCache)
+            {
+                curId = read !(long) ();
+            }
+            else
+            {
+                assert (false);
+            }
+            return cast (T) (unitCache[curId]);
         }
         else
         { // general read for Model classes
-//            pragma (msg, CallConstructor !(T));
-            mixin (CallConstructor !(T));
+            mixin (ReadContents !(T));
+            return mixin (CallConstructor !(T));
         }
     }
 
