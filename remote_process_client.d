@@ -6,6 +6,7 @@ import std.exception;
 import std.range;
 import std.socket;
 import std.stdio;
+import std.string;
 import std.traits;
 
 import model;
@@ -76,6 +77,23 @@ enum MessageType : byte
     moveMessage,
 }
 
+class Cache (T)
+{
+	T contents;
+
+	this (T contents_)
+	{
+		contents = contents_;
+	}
+
+	alias contents this;
+}
+
+auto cacheImmutable (T) (T contents_)
+{
+	return new Cache !(immutable T) (contents_);
+}
+
 class RemoteProcessClient
 {
 public:
@@ -101,7 +119,7 @@ public:
         enforce (read !(MessageType) == MessageType.teamSize);
         return read !(int);
     }
-    
+
     void writeProtocolVersion ()
     {
         write (MessageType.protocolVersion);
@@ -143,46 +161,78 @@ public:
 private:
     Socket socket;
 
+    Cache !(immutable Building []) buildingsCache;
+    Cache !(immutable Player []) playersCache;
+    Cache !(immutable Tree []) treesCache;
+
     auto read (T) ()
         if (is (T == class))
     {
         debug (io) {writeln (">read " ~ T.stringof);}
-        debug (io) {scope (exit) {writeln ("<read " ~ T.stringof);}}
+        debug (io) {scope (success) {writeln ("<read " ~ T.stringof);}}
         enforce (read !(bool));
 
 //        pragma (msg, ReadContents !(T));
-//        pragma (msg, CallConstructor !(T));
         mixin (ReadContents !(T));
-        mixin (CallConstructor !(T));
-    }
 
-    void write (T : Move) (T t)
-    {
-        debug (io) {writeln (">write " ~ T.stringof);}
-        debug (io) {scope (exit) {writeln ("<write " ~ T.stringof);}}
-        write !(bool) (true);
+        static if (is (Unqual !(T) == World))
+        { // custom read: World has caching for some members
+            if (buildings !is null)
+            {
+                buildingsCache = cacheImmutable (buildings);
+            }
+            if (players !is null)
+            {
+                playersCache = cacheImmutable (players);
+            }
+            if (trees !is null)
+            {
+                treesCache = cacheImmutable (trees);
+            }
 
-        write !(double) (t.speed);
-        write !(double) (t.strafeSpeed);
-        write !(double) (t.turn);
-        write !(ActionType) (t.action);
-        write !(double) (t.castAngle);
-        write !(double) (t.minCastDistance);
-        write !(double) (t.maxCastDistance);
-        write !(long) (t.statusTargetId);
-        write !(SkillType) (t.skillToLearn);
-        write !(immutable Message []) (t.messages);
+/*
+            pragma (msg, CallConstructor !(T)
+                .replace ("buildings", "buildingsCache")
+                .replace ("players", "playersCache")
+                .replace ("trees", "treesCache"));
+*/
+            mixin (CallConstructor !(T)
+                .replace ("buildings", "buildingsCache")
+                .replace ("players", "playersCache")
+                .replace ("trees", "treesCache"));
+        }
+        else
+        { // general read for Model classes
+//            pragma (msg, CallConstructor !(T));
+            mixin (CallConstructor !(T));
+        }
     }
 
     void write (T) (T t)
-        if (is (T == class) && !is (T : Move))
+        if (is (T == class))
     {
         debug (io) {writeln (">write " ~ T.stringof);}
-        debug (io) {scope (exit) {writeln ("<write " ~ T.stringof);}}
+        debug (io) {scope (success) {writeln ("<write " ~ T.stringof);}}
         write !(bool) (true);
 
-//        pragma (msg, WriteContents !(T));
-        mixin (WriteContents !(T));
+        static if (is (Unqual !(T) == Move))
+        { // custom write: Move does not have an all-fields constructor
+            write !(double) (t.speed);
+            write !(double) (t.strafeSpeed);
+            write !(double) (t.turn);
+            write !(ActionType) (t.action);
+            write !(double) (t.castAngle);
+            write !(double) (t.minCastDistance);
+            write !(double) (t.maxCastDistance);
+            write !(long) (t.statusTargetId);
+            write !(SkillType) (t.skillToLearn);
+            write !(immutable Message []) (t.messages);
+        }
+        else
+        { // generic write for model classes
+//            pragma (msg, WriteContents !(T));
+            mixin (WriteContents !(T));
+        }
     }
 
     auto read (T : T [num], ulong num) ()
