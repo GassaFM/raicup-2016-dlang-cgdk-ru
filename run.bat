@@ -5,7 +5,7 @@ rem call compile-d.bat
 if "%LOCAL_RUNNER_HOME%" == "" (
     :: Change the next line to your local runner's working directory
     :: or pass it via an environment variable
-    set LOCAL_RUNNER_HOME=C:\programs\git\_Russian-AI-Cup-2016\local-runner-ru\
+    set LOCAL_RUNNER_HOME=C:\some\path\local-runner-ru\
 )
 
 pushd %LOCAL_RUNNER_HOME%
