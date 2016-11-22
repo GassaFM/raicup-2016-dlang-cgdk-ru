@@ -13,6 +13,9 @@ import std.typecons;
 import model;
 import strategy;
 
+/**
+ * Класс, в котором должна быть реализована стратегия.
+ */
 final class MyStrategy : Strategy
 {
     /**
