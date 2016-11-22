@@ -14,7 +14,7 @@ MyStrategy : $(SRC)
 	$(DC) $(DFLAGS) $(SRC) -of$@
 
 debug : $(SRC)
-	$(DC) $(DDEBUGFLAGS) $(SRC) -of$@
+	$(DC) $(DDEBUGFLAGS) $(SRC) -ofMyStrategy
 
 run : MyStrategy
 	cd $(LOCAL_RUNNER_HOME) && $(LOCAL_RUNNER)
